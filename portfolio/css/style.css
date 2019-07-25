@@ -1,0 +1,23 @@
+body{
+    text-align: center;
+}
+textarea{
+    text-align: center;
+}
+img{
+    margin: 0 auto ;
+}
+
+.picture img{
+    width: 700px;
+    height: 500px;
+    margin:0 auto;
+
+
+}
+.images img{
+    width: 700px;
+    height: 500px;
+    margin:0 auto;
+
+}

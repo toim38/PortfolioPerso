@@ -1,0 +1,42 @@
+header{
+background: gray;
+height: 135px;
+width: 1390px;
+margin: 0 ;
+border: 3px;
+position: relative;}
+
+header.img{
+float: left;
+width: 10px;
+height: 10px; 
+text-align: center;
+padding: 15px;
+border: 3px;
+}
+.clear{
+    clear: both;
+}
+nav{
+background: green;
+height: 20px;
+width: 1390px;
+margin: 0;
+border: 1px;
+}
+span{
+font-size: 10px;
+text-align: justify;
+height: 5px;
+width: 3px;
+}
+.bigfoto{
+image-resolution: 200px;
+background-color: yellow;
+width: 1390px;
+height:1px;
+   
+
+
+
+
