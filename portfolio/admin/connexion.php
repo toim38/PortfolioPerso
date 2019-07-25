@@ -1,65 +1,40 @@
 <?php
 
   require_once "../inc/init.inc.php";
-  /*$prenom="";
-  $nom="";
-  $email="";
-  $mdp="";
-  */
-  $preError="";
-  $nomError="";
-  $posteError="";
-  $mdpError="";
+//je créer des variables avec les names 
 extract($_POST);
+
+// je me connecte à ma table user 
+$resultat=$bdd->query("SELECT*FROM user");
+
+$admin=$resultat->fetch(PDO::FETCH_ASSOC);
+
+/*
+verification des champs de mon formulaire.
+1/verication que les champs ne soient pas vides
+2/verification de l'email & mdp
+3/donnée comme celles de la bdd
+
+*/
 
  if($_POST)
   {
-    if(empty($prenom)||iconv_strlen($prenom)<3||iconv_strlen($prenom)>50)
+    if(empty($uemail)|| !filter_var($uemail, FILTER_VALIDATE_EMAIL) || $uemail != $admin['uemail'] && !isset($_POST['umdp']) || password_verify($_POST['umdp'], $admin['umdp']) && $admin['statut']!= 1)
     {
-      $preError.='<small class="text-danger">saisi un prenom entre 3 et 20 caracteres</small>';
-    }
-    if(empty($nom)||iconv_strlen($nom)<3||iconv_strlen($nom)>50)
-    {
-      $nomError.='<small class="text-danger">saisi un nom entre 3 et 20 caracteres</small>';
+      /*si je rentre ds la condition if-> redidect° vers la page d'accueil    */
+      header('location:../index.php');
+    }else{
+//si je ne rentre pas ds la condition du if -> redirect° espace admin
+      header('location:accueilAdmin.php');
     }
 
-    if(empty($_email)||iconv_strlen($_email)<4||iconv_strlen($_email)>80)
-    {
-      $posteError.='<small class="text-danger">saisi un prenom entre 3 et 20 caracteres</small>';
-    }
-    if(empty($mdp)||iconv_strlen($mdp)<10||iconv_strlen($mdp)>100)
-    {
-      $mdpError.='<small class="text-danger">il faut 10, min et 100 max/small>';
-    }
  }
 //fin if($_POST)
-
-//inserer en BDD si pas d'erreur
-
-if(empty ($nomError) && empty ($preError) && empty($emailError) && empty ($mdpError))
-{
-    //je me connecte
-$bdd = new pdo(
-    "mysql:host=localhost;dbname=portfolio",
-    'root',
-    '',
-    array(
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-    )
-);
-  $newAdministrateur = $bdd->prepare("INSERT INTO administrateur (nom, prenom, email, mdp) VALUES (:nom,:prenom,:email,:mdp)");
- foreach($_POST as $key =>$value){
-     $newAdministrateur->bindvalue(":$key", $value, PDO::PARAM_STR);
-                                  }
-$newAdministrateur->execute();
-$msgSuccess .='<div class="alert alert-success">Administrateur bien reconnu</div>';
- 
-}
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,37 +48,25 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <div class="alert alert-dark" role="alert">
     <h1 class="text-center">CONNEXION ADMIN</h1>
 </div>
-    <form method="post">
-  <div class="row">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="nom" name="nom">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="prenom">
-    </div>
-  </div>
-</form>
-
+<div class="container m-5 mx-auto">
 <form method="post">
   <div class="form-group">
     <label for="exampleInputEmail1"></label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    
+    <input type="text" class="form-control m-2" name="uemail" aria-describedby="emailHelp" placeholder="Enter email">    
   </div>
+
   <div class="form-group">
     <label for="exampleInputPassword1"></label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control m-2" name="umdp" placeholder="Password">
   </div>
   
-<div class="form-group">
-    <label for="exampleFormControlTextarea1">COMMENTAIRE</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-
-
-
-  <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+  <button type="submit" class="btn btn-primary m-3">ENREGISTRER</button>
 </form>
+</div>
+
+
+
+
 <?php 
 require_once "../inc/footer.inc.php";
 ?>
