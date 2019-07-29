@@ -28,15 +28,17 @@ require_once "init.inc.php"
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="curriculum vitae.php">curriculum vitae<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?=URL?>curriculum vitae.php">curriculum vitae<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="projets.php">Projets</a>
+            <a class="nav-link" href="<?=URL?>projets.php">Projets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="aptitude.php">Aptitude</a>
+            <a class="nav-link" href="<?=URL?>aptitude.php">Aptitude</a>
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" href="<?=URL?>/inc/formulaire_visiteur.php">inscription</a>
+          </li>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="https://lepoles.org">LePoleS</a>
               <a class="dropdown-item" href="https://www.solidarite-internationale-vitrysurseine.com/">Solidarité Internationale</a>

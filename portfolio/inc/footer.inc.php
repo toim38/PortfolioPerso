@@ -1,10 +1,13 @@
 </main><!-- FIN MAIN -->
+
 <footer class=text-center>
     <!-- code -->
     
    <div class="alert alert-info" role="alert">
+
  COPYRIGHT portfolio à Touhami s'il y a des droits je me les réservent!!!!!<br>
  contacts : eltzarou@laposte.net ; toim38@github.com
+ 
 </div> 
 
     

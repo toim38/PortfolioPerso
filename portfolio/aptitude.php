@@ -17,11 +17,11 @@ La manipulation et gestion du monde des outils commence là.</p>
 </div>
 
 <div class="images">
-   <img src="photo/clint-bustrillos.jpg"alt="" height="275",wigth="350"  >
-<img src="photo/travail-chantier.jpg" alt=""height="275",wigth="350" >
+   <img src="photo/clint-bustrillos.jpg"alt="" height="255",wigth="320"  >
+<img src="photo/travail-chantier.jpg" alt=""height="255",wigth="320" >
 </div>
 </section>
-<div class="container mt-3"></div>
+<div class="container mt-2"></div>
 <section class="rapport humain">
 <div class="alert alert-warning" role="alert">
     <h2>RAPPORT HUMAIN</h2></div>

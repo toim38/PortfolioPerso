@@ -5,7 +5,9 @@ session_start();
 
 //--------------------chemin------------------------
 
-define("URL","http://localhost/portfolio/");
+define("URL","http://localhost/portfolioPerso/portfolio/");
+
+
 //------------------failles XSS---------------
 foreach($_POST as $key =>$value)
 {
