@@ -12,7 +12,7 @@ require_once "../inc/init.inc.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Accueil Admin</title>
@@ -20,10 +20,10 @@ require_once "../inc/init.inc.php";
 
 
 <body>
-<h1 class="text-center text-primary m-5">Accueil Admin</h1>
+<h1 class="text-center text-primary alert alert-warning m-5">Accueil Admin</h1>
+<section class="tabledesmatieres" >
 
-
-<div class="card m-5" style="width: 18rem;X">
+<div class="card m-10" style="width: 28rem;X">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
     <a href="gestionProjets.php">Gestion Projets</a>
@@ -39,6 +39,6 @@ require_once "../inc/init.inc.php";
     </li>
   </ul>
 </div>
-
+</section>
 </body>
 </html>

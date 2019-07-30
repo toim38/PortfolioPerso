@@ -8,6 +8,7 @@ session_start();
 define("URL","http://localhost/portfolioPerso/portfolio/");
 
 
+
 //------------------failles XSS---------------
 foreach($_POST as $key =>$value)
 {

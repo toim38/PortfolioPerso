@@ -49,7 +49,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <h1 class="text-center">CONNEXION ADMIN</h1>
 </div>
 <div class="container m-5 mx-auto">
-<form method="post">
+<form method="post" action="">
   <div class="form-group">
     <label for="exampleInputEmail1"></label>
     <input type="text" class="form-control m-2" name="uemail" aria-describedby="emailHelp" placeholder="Enter email">    
@@ -71,5 +71,3 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 require_once "../inc/footer.inc.php";
 ?>
 
-</body>
-</html>
