@@ -19,4 +19,5 @@ function internauteEstConnecteEtEstAdmin()
         return false;
     }
 }
+
 ?>

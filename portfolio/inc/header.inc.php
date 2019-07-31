@@ -10,17 +10,19 @@ require_once "init.inc.php"
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CDN BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--cdn fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- CSS PERSO -->
     <link rel="stylesheet" href="css/style.css">
     <title>ACCUEIL</title>
 </head>
 <header class="container-fluid">
     <h1 class="text-center">
-      <div class="alert alert-warning" role="alert"> PORTFOLIO <br><em>ZAROUEL Touhami</em>
+      <div class="alert alert-success" role="alert"> PORTFOLIO <br><em>ZAROUEL Touhami</em>
       </div>
       DEVELOPPEUR INTEGRATEUR WEB junior
     </h1>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="index.php">Mon Portfolio</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -39,6 +41,11 @@ require_once "init.inc.php"
           <li class="nav-item">
             <a class="nav-link" href="<?=URL?>/inc/formulaire_visiteur.php">inscription</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?=URL?>/admin/accueilAdmin.php">Administrateur</a>
+          </li>
+
+
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="https://lepoles.org">LePoleS</a>
               <a class="dropdown-item" href="https://www.solidarite-internationale-vitrysurseine.com/">Solidarité Internationale</a>
@@ -50,5 +57,5 @@ require_once "init.inc.php"
        
     </nav>
   </header><!-- FIN HEADER --> 
-  <main>
+  <main class="container">
     

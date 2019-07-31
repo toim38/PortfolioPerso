@@ -58,36 +58,39 @@ if($_POST)
     <title>formulaire contact</title>
 </head>
 <body>
-
+<div class="container-fluid">
 <!-- formulaire -->
  <form action="" method="post">
   <div class="row">
-    <div class="col">
+    <div class="col-md-4">
       <input type="text" name="contact_nom" class="form-control" placeholder="nom">
     </div>
-    <div class="col">
+    <div class="col-md-4">
       <input type="text" name="contact_prenom" class="form-control" placeholder="prenom">
     </div>
-  </div>
-<br>
-  <div class="row">
-    <div class="col">
+  
+
+  
+    <div class="col-md-6">
       <input type="mail" name="contact_email" class="form-control" placeholder="email">
     </div>
-<br>
+</div>
+
     <div class="form-group">
     
-    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="message" rows="3"></textarea>
+    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="message" rows="6"></textarea>
   </div>
+  <div class="clear"></div>
   <div class="form-group row">
-    <div class="col-sm-10">
+    <div class="col-sm-6">
       <button type="submit" class="btn btn-primary">enregistrer</button>
-    </div>
+    </div>    
   </div>
+  
 </form>
 <!-- fin formulaire -->
-
-
+</div>
+</div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 

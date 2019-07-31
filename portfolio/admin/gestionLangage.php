@@ -12,7 +12,7 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
       $contenu .='<tr>';
       $contenu .='<th scope="row">'.$langage['id_lang'].'</th>';
       $contenu .='<td>'. $langage['id_lang'].'</td>';
-      $contenu .='<td>'. $langage['niveau-langage-acquis'].'</td>';
+      $contenu .='<td>'. $langage['lang_level'].'</td>';
       $contenu .='<td>'. $langage['langage'].'</td>';
       $contenu .='<td><i class="far fa-edit text-warning"></i></td>';
       $contenu .='<td><i class="fas fa-trash text-danger"></i></td>';
