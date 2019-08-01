@@ -1,10 +1,20 @@
-    body{ background-color:#8d909b;
-    text-align: center;
-font-family: fantasy; }
-    @media screen and (max-width: 960px){
-        body{ background-color: orange;
+ *{
+     box-sizing: border-box;
+ } 
+  
+  
+  
+  body{ background-color:#8d909b;
         text-align: center;
-    font-family: cursive; }
+        font-family: fantasy; }
+    @media screen and (max-width: 520px){
+        
+        body{
+             background-color: orange;
+        text-align: center;
+        font-family: cursive;
+        display: flex; 
+}
     }
 
 textarea{

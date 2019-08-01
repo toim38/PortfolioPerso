@@ -29,7 +29,7 @@ require_once "../inc/init.inc.php";
     <a href="gestionProjets.php">Gestion Projets</a>
     </li>
     <li class="list-group-item">
-    <a href="gestionFormations.php">Gestion Formations</a>
+    <a href="gestionFormation.php">Gestion Formation</a>
     </li>
     <li class="list-group-item">
     <a href="gestionLangage.php">Gestion Languages</a>

@@ -16,8 +16,11 @@ while($formation = $resultat->fetch(PDO::FETCH_ASSOC)){
       $contenu .='<td>'.$formation['form_niveau'].'</td>';
       $contenu .='<td><i class="far fa-edit text-warning"></i></td>';
       $contenu .='<td><i class="fas fa-trash text-danger"></i></td>';
+    $contenu .='<td><a href="?action=modifier&id='.$formation['id_projet'].'"><i class="far fa-edit text-warning"></i></td>';
+    $contenu .='<td><a href="?action=supprimer&id='.$formation['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
     $contenu .='</tr>';
-}
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +30,7 @@ while($formation = $resultat->fetch(PDO::FETCH_ASSOC)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="../css/style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>gestionFormation</title>
 </head>
@@ -69,24 +72,16 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
         <td>2001</td>
         <td>4</td>
         <td>technicien de maintenance informatique</td>
-        <td></td>
+        <td></td>       
         
-        
 
-    </tr>
-
-
-
+    </tr> 
 
 
 </table>
 
  </thead>
-  <tbody>
-    
-    <?= $contenu;?>
-  </tbody>
-</table>
+
 </div>
 </body>
 </html>

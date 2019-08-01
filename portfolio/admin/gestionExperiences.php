@@ -1,6 +1,6 @@
 <?php
 require_once "../inc/init.inc.php";
-require_once "../inc/header.inc.php"
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,14 +8,16 @@ require_once "../inc/header.inc.php"
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">  
  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>gestionExperiences</title>
 </head>
-<body>
+<body >
+<h1 class="text-center text-primary m-5">Gestion des experiences</h1>
+
  <section class="intro  text-center">
 <i class=" fas fa-hiking"></i>______<i class="fas fa-hiking"></i>________<i class="fas fa-hiking"></i>
      

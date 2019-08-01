@@ -42,7 +42,7 @@ require_once "init.inc.php"
             <a class="nav-link" href="<?=URL?>/inc/formulaire_visiteur.php">inscription</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>/admin/accueilAdmin.php">Administrateur</a>
+            <a class="nav-link" href="<?=URL?>/admin/connexion.php">Administrateur</a>
           </li>
 
 
