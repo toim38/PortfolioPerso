@@ -19,7 +19,7 @@ while($formation = $resultat->fetch(PDO::FETCH_ASSOC)){
     $contenu .='<td><a href="?action=modifier&id='.$formation['id_projet'].'"><i class="far fa-edit text-warning"></i></td>';
     $contenu .='<td><a href="?action=supprimer&id='.$formation['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
     $contenu .='</tr>';
-
+}
     
 ?>
 

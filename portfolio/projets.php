@@ -3,6 +3,7 @@ require_once "inc/init.inc.php";
 require_once "inc/header.inc.php";
 
 ?>
+<main class="container">
   <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     REALISATIONS
@@ -46,6 +47,6 @@ require_once "inc/header.inc.php";
         </div>
     </div>
 </div>
-
+</main>
 <?php
 require_once "inc/footer.inc.php";

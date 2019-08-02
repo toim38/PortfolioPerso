@@ -18,11 +18,11 @@ require_once "init.inc.php"
 </head>
 <header class="container-fluid">
     <h1 class="text-center">
-      <div class="alert alert-success" role="alert"> PORTFOLIO <br><em>ZAROUEL Touhami</em>
+      <div class="alert alert-dark" role="alert"> PORTFOLIO <br><em>ZAROUEL Touhami</em>
       </div>
       DEVELOPPEUR INTEGRATEUR WEB junior
     </h1>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
       <a class="navbar-brand" href="index.php">Mon Portfolio</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -57,5 +57,5 @@ require_once "init.inc.php"
        
     </nav>
   </header><!-- FIN HEADER --> 
-  <main class="container">
+  
     

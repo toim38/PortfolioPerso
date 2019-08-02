@@ -2,11 +2,11 @@
 require_once "inc/init.inc.php";
 require_once "inc/header.inc.php";
 ?>
-<div class="cv">
+<main class="container-fluid background-color">
 
-<img src="photo/cv.jpg" alt="">
+<img src="photo/cv.jpg"  alt="">
 
-</div>
+</main>
 
     <!--introduction des form de bootstrap-->
     

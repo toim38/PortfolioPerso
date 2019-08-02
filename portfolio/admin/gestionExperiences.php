@@ -17,6 +17,14 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </head>
 <body >
 <h1 class="text-center text-primary m-5">Gestion des experiences</h1>
+<div class="row">
+<div class="col-md-4 offset-md-8">
+<a href="form_experience.php"><i class="fas fa-plus-circle  fa-2x"></i></a>
+</div>
+<div class="col-md-4 offset-md-8">
+<a href=""><i class="far fa-trash-alt  fa-2x"></i></a>
+</div>
+</div>
 
  <section class="intro  text-center">
 <i class=" fas fa-hiking"></i>______<i class="fas fa-hiking"></i>________<i class="fas fa-hiking"></i>
