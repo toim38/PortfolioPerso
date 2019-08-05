@@ -52,7 +52,7 @@ while($projet = $resultat->fetch(PDO::FETCH_ASSOC))
       $contenu .='<td>'.$projet['titre_projet'].'</td>';
       $contenu .='<td>'.$projet['liens'].'</td>';
       $contenu .='<td>'.$projet['contenu'].'</td>';
-      $contenu .='<td><a href="?action=modifier&id='.$projet['id_projet'].'"><i class="far fa-edit text-warning"></i></td>';
+      $contenu .='<td><a href="form_projet.php && ?action=modifier&id='.$projet['id_projet'].'"><i class="far fa-edit text-warning"></i></td>';
       $contenu .='<td><a href="?action=supprimer&id='.$projet['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
     $contenu .='</tr>';
 }
@@ -76,6 +76,20 @@ while($projet = $resultat->fetch(PDO::FETCH_ASSOC))
 </head>
 <body>
 <h1 class="text-center text-primary m-5">Gestion des projets</h1>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../admin/form_projet.php">formulaire d'ajout</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../curriculum vitae.php">cv</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
 <div class="container">
 <table class="table table-striped table-dark">
   <thead>

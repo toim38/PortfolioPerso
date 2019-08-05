@@ -10,37 +10,9 @@ if($_POST){
 
 
 
-}// FIN if($_POST)
-//------------on connecte l'admin-------------
-// if(!isset($_GET['experience'])): 
-
-// $resultat = $bdd->prepare("SELECT * FROM experience WHERE emploi= :emploi");
-                    // $resultat->bindValue(':emploi', $_GET['experience'], PDO::PARAM_STR);
-                    // $resultat->execute();
-
-                // elseif :
-
-                    // sinon, il n ya pas de catégorie dans l' URL ( onglet boutique), on selectionne/affiche tous les produits
-                    // $resultat = $bdd->prepare("SELECT * FROM emploi");
-                    // $resultat->execute();
-
-                // else :
-                    // sinon, il n ya pas de catégorie dans l' URL ( onglet boutique), on selectionne/affiche tous les produits
-                    // $resultat = $bdd->prepare("SELECT * FROM formation");
-                    // $resultat->execute();
-
-
-                // while ($emploi, $formation= $resultat->fetch(PDO::FETCH_ASSOC)) :
-                
-
-// $resultat = $bdd->prepare("SELECT * FROM experience WHERE formation= :formation");
-                    // $resultat->bindValue(':formation', $_GET['experience'], PDO::PARAM_STR);
-                    // $resultat->execute();
-
-                
-                // endif;
+}
                            
-                        ?>                  
+?>                  
 
 
 
@@ -59,12 +31,16 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
   <div class="description">
 
 <div class="form-check form-check-inline" method="post">
-  <input class="form-check-input" type="radio" name="formation" id="inlineRadio1" >
-  <label class="form-check-label" for="inlineRadio1">Formation</label>
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Emploi">
+  <label class="form-check-label" for="inlineRadio1">Emploi</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="emploi" id="inlineRadio2" >
-  <label class="form-check-label" for="inlineRadio2">Emploi</label>
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Formation">
+  <label class="form-check-label" for="inlineRadio2">Formation</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+  <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
 </div>
                 </div>
 
@@ -89,18 +65,18 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
       <label for="validationTooltipUsername" name="année1"></label>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="année1"></span>
+          <span class="input-group-text" id="année-debut"></span>
         </div>
-        <input type="text" class="form-control" name="année1" placeholder="date" aria-describedby="validationTooltipUsernamePrepend">           
+        <input type="text" class="form-control" name="année-debut" placeholder="date-debut" aria-describedby="validationTooltipUsernamePrepend">           
     </div>
   </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername" name="année2"></label>
+      <label for="validationTooltipUsername" name="année-fin"></label>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="année2"></span>
+          <span class="input-group-text" id="année-fin"></span>
         </div>
-        <input type="text" class="form-control" name="année2" placeholder="date" aria-describedby="validationTooltipUsernamePrepend">           
+        <input type="text" class="form-control" name="année-fin" placeholder="date-fin" aria-describedby="validationTooltipUsernamePrepend">           
     </div>
   </div>
 

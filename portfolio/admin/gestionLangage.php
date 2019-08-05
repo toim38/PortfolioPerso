@@ -36,7 +36,22 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
 </head>
 <body>
   <h1 class="text-center text-primary m-5">Gestion de langage</h1>
+
 <div class="container">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../admin/from_langage.php">formulaire d'ajout</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../curriculum vitae.php">cv</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
 <table class="table table-striped table-dark">
   <thead>
     <tr>

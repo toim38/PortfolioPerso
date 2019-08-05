@@ -37,6 +37,21 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <body>
 <h1 class="text-center text-primary m-5">Gestion de formation</h1>
 <div class="container">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../admin/form_experience.php">formulaire d'ajout</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../curriculum vitae.php">cv</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
 <table class="table table-striped table-dark">
   <thead>
     

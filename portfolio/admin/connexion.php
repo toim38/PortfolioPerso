@@ -22,7 +22,7 @@ verification des champs de mon formulaire.
     if(empty($uemail)|| !filter_var($uemail, FILTER_VALIDATE_EMAIL) || $uemail != $admin['uemail'] && !isset($_POST['umdp']) || password_verify($_POST['umdp'], $admin['umdp']) && $admin['statut']!= 1)
     {
       /*si je rentre ds la condition if-> redidect° vers la page d'accueil    */
-      header('location:../index.php');
+      header('location:https://www.DuckDuckGo.com');
     }else{
 //si je ne rentre pas ds la condition du if -> redirect° espace admin
       header('location:accueilAdmin.php');

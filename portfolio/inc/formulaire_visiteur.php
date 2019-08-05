@@ -1,45 +1,47 @@
 <?php
-require_once "../inc/init.inc.php";//$nomError="";
+require_once "../inc/init.inc.php";
+// variable d'affichage de message erreur;
 $preError="";
 $nomError="";
 $mailError="";
+// variable d'affichage de message succes;
+$msgSuccess="";
 
- $msgSuccess="";
- //verif FROM
 extract($_POST);
+// echo '<pre>';echo var_dump($_POST);echo '</pre>'; 
 
+//verification des champs du formulaire
 if($_POST)
   {
-    if(empty($contact_prenom) && iconv_strlen($contact_prenom)<3 && iconv_strlen($contact_prenom)>50)
+    if(empty($contact_prenom) || iconv_strlen($contact_prenom)<3 || iconv_strlen($contact_prenom)>50)
       {
         $preError.='<small class="text-danger">saisi un prenom entre 3 et 20 caracteres</small>';
       }
-    if(empty($contact_nom) && iconv_strlen($contact_nom)<3 && iconv_strlen($contact_nom)>50)
+    if(empty($contact_nom) || iconv_strlen($contact_nom)<3 || iconv_strlen($contact_nom)>50)
       {
         $nomError.='<small class="text-danger">saisi un nom entre 3 et 20 caracteres</small>';
       }   
-    if(filter_var($contact_email, FILTER_VALIDATE_EMAIL))
+    if(!filter_var($contact_email, FILTER_VALIDATE_EMAIL))
      {
        $mailError .='<small class="text-danger">saisi un email valide</small>';
      }
+    if(empty($message)|| iconv_strlen($message)>255)
+     {
+       $mailError .='<small class="text-danger">saisi un texte de 255 maxi pour être valide</small>';
+     }
     //inserer en BDD si pas d'erreur
     if(empty($nomError) && empty ($preError) && empty($mailError))
-      {
-    //je me connecte
-        $bdd = new pdo(
-          "mysql:host=localhost;dbname=portfolio",'root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));    
-        
+      {      
           $newVisiteur = $bdd->prepare("INSERT INTO contact(contact_nom,contact_prenom,contact_email,message) VALUES (:contact_nom,:contact_prenom,:contact_email,:message)");
 
-    foreach($_POST as $key =>$value)
-        {
-          $newVisiteur->bindValue(":$key", $value, PDO::PARAM_STR);
-        }       
+          $newVisiteur->bindvalue(':contact_nom', $contact_nom, PDO::PARAM_STR);
+          $newVisiteur->bindvalue(':contact_prenom', $contact_prenom, PDO::PARAM_STR);
+          $newVisiteur->bindvalue(':contact_email', $contact_email, PDO::PARAM_STR);
+          $newVisiteur->bindvalue(':message', $message, PDO::PARAM_STR);
   
           $newVisiteur->execute();
-      } 
-      $msgSuccess .='<div class="alert alert-success">visiteur bien enregistré</div>';
-      echo '<pre>';echo var_dump($_POST);echo '</pre>'; 
+          $msgSuccess .='<div class="alert alert-success">visiteur bien enregistré</div>';
+        } 
   }
   //fin if($_POST)
 
@@ -61,23 +63,28 @@ if($_POST)
 <div class="container-fluid">
 <!-- formulaire -->
  <form action="" method="post">
+ <?php echo $msgSuccess; ?>
   <div class="row">
     <div class="col-md-4">
+      <?php echo $nomError; ?>
       <input type="text" name="contact_nom" class="form-control" placeholder="nom">
     </div>
     <div class="col-md-4">
+      <?php echo  $preError; ?>
       <input type="text" name="contact_prenom" class="form-control" placeholder="prenom">
     </div>
   
 
   
     <div class="col-md-6">
+      <?php echo  $mailError; ?>
       <input type="mail" name="contact_email" class="form-control" placeholder="email">
     </div>
 </div>
 
     <div class="form-group">
     
+      <?php echo  $mailError; ?>
     <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="message" rows="6"></textarea>
   </div>
   <div class="clear"></div>
