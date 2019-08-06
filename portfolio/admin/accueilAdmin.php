@@ -23,7 +23,7 @@ require_once "../inc/init.inc.php";
 <h1 class="text-center text-primary alert alert-warning m-5">Accueil Admin</h1>
 <section class="tabledesmatieres" >
 
-<div class="card m-10" style="width: 28rem;X">
+<div class=" container card m-10" style="width: 28rem;X">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
     <a href="gestionProjets.php">Gestion Projets</a>
@@ -36,6 +36,9 @@ require_once "../inc/init.inc.php";
     </li>
     <li class="list-group-item">
     <a href="gestionExperiences.php">Gestion Expériences</a>
+    </li>
+    <li class="list-group-item">
+    <a href="gestion_contact.php">Gestion Contact</a>
     </li>
   </ul>
 </div>

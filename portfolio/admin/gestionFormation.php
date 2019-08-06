@@ -9,16 +9,16 @@ $resultat = $bdd->query("SELECT * FROM formations");
 // 4 -JE récupère les infos de contenu dans ma table projet avec une boucle while
 while($formation = $resultat->fetch(PDO::FETCH_ASSOC)){
     //j'affiche le résultat :
-    $contenu .='<tr>';
+      $contenu .='<tr>';
       $contenu .='<th scope="row">'.$formation['id_formation'].'</th>';
       $contenu .='<td>'.$formation['form_intitule'].'</td>';
       $contenu .='<td>'.$formation['form_annee'].'</td>';
       $contenu .='<td>'.$formation['form_niveau'].'</td>';
       $contenu .='<td><i class="far fa-edit text-warning"></i></td>';
       $contenu .='<td><i class="fas fa-trash text-danger"></i></td>';
-    $contenu .='<td><a href="?action=modifier&id='.$formation['id_projet'].'"><i class="far fa-edit text-warning"></i></td>';
-    $contenu .='<td><a href="?action=supprimer&id='.$formation['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
-    $contenu .='</tr>';
+      $contenu .='<td><a href="?action=modifier&id='.$formation['id_projet'].'"><i class="far fa-edit text-warning"></i></a></td>';
+      $contenu .='<td><a href="?action=supprimer&id='.$formation['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
+      $contenu .='</tr>';
 }
     
 ?>

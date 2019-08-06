@@ -7,39 +7,19 @@ extract($_POST);
 extract($_GET);
 
 $validate = '';
-
-//------SUPPRESSION PROJET------------
-if(isset($_GET['action'])&& $_GET['action']=='supprimer')
-{
-    //-----requet suppression 
-
-    
-    $supp_data=$bdd->prepare("DELETE * FROM projets WHERE id_projet = :id_projet");
-    $supp_data->bindValue(":id_projet",$id_projet,PDO::PARAM_INT);
-    //id_projet fait reference à $_GET['id_projet'](extract)
-    $supp_data->execute();
-    $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le produit n°<strong>$id_projet</strong>à bien été supprimé!!</div>";
-}
-// fin requete suppression
-
-
-//------modification PRODUIT------------
-if(isset($_GET['action'])&& $_GET['action']=='modifier')
-{ 
-    //-----requet modification    
-  $modif_data=$bdd->prepare ("UPDATE  projets SET titre_projet = :titre_projet , liens = :liens ,contenu = :contenu, WHERE 'id_projet =:$id_projet");
-  $modif_data->bindValue(":id_projet",$id_projet,PDO::PARAM_INT);
-  $modif_data->execute();   
-  $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le produit n°<strong>$id_projet</strong>à bien été modifié!!</div>";
-}
-   
-/*("UPDATE  projets SET titre_projet = :titre_projet , liens = :liens ,contenu = :contenu WHERE id_projet = $id_projet");    
-//id_projet fait reference à $_GET['id_projet'](extract)    
-// fin requete MODIFICATION*/
-// 2/ -variable d'affichage :
-
 $contenu ='';
 // cette variable me permet d'afficher le résultat de ma boucle dans le HTML
+//------SUPPRESSION PROJET------------
+if(isset($action) && $action =='supprimer' && isset($id)){
+
+  $delete = $bdd->prepare("DELETE FROM projets WHERE id_projet = :id_projet");
+  $delete->bindValue(':id_projet',$id,PDO::PARAM_INT);
+  $delete->execute();
+}
+
+
+// fin requete suppression
+
 //  3/ - Je me connecte à la table projets
 $resultat = $bdd->query("SELECT * FROM projets");
 
@@ -52,10 +32,19 @@ while($projet = $resultat->fetch(PDO::FETCH_ASSOC))
       $contenu .='<td>'.$projet['titre_projet'].'</td>';
       $contenu .='<td>'.$projet['liens'].'</td>';
       $contenu .='<td>'.$projet['contenu'].'</td>';
-      $contenu .='<td><a href="form_projet.php && ?action=modifier&id='.$projet['id_projet'].'"><i class="far fa-edit text-warning"></i></td>';
+      $contenu .='<td><a href="form_projet.php?action=modifier&id='.$projet['id_projet'].'"><i class="far fa-edit text-warning"></i></td>';
       $contenu .='<td><a href="?action=supprimer&id='.$projet['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
     $contenu .='</tr>';
 }
+
+//------modification PRODUIT------------
+   
+   
+/*("UPDATE  projets SET titre_projet = :titre_projet , liens = :liens ,contenu = :contenu WHERE id_projet = $id_projet");    
+//id_projet fait reference à $_GET['id_projet'](extract)    
+// fin requete MODIFICATION*/
+// 2/ -variable d'affichage :
+
 ?>
 
 <!-- I Je m'occupe de mon visuel : -->
@@ -98,7 +87,7 @@ while($projet = $resultat->fetch(PDO::FETCH_ASSOC))
       <th scope="col">Titre</th>
       <th scope="col">Contenu</th>
       <th scope="col">Liens</th>
-      <th colspan="2">Contenu</th>
+      <th colspan="2">Action</th>
     </tr>
   </thead>
   <tbody>
