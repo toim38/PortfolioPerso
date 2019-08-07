@@ -1,30 +1,56 @@
 <?php
+require_once "../inc/init.inc.php";
 extract($_POST);
 extract($_GET);
 
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
-//-----requete de modification------------------
+$msgTitre='';
+$msgContenu='';
+$msgliens='';
+$successProjet='';
+// echo '<pre style="background:black;color:white;">';
+// print_r($_POST);
+// echo '</pre>';
+//-----requete de modification et ajout en bdd------------------
 
-// Exo : requete update
-if(isset($_GET['action']) && $_GET['action'] == 'modifié'){
+//---insertion en bdd
+if($_POST){
+  if(empty($titre_projet)||iconv_strlen($titre_projet)<2||iconv_strlen($titre_projet)>100){
+    $msgTitre.='<span class=" alert-warning text-danger"> ** Saisissez un titre valide (100 caractère max)</span>';
+  }  
+  if(empty($contenu) ||iconv_strlen($contenu)>400){
+    $msgContenu.='<span class="alert-warning text-danger"> ** La description de doit pas dépasser 400 caractères</span>';
+  }  
+  if(empty($liens) ||!filter_var($liens, FILTER_VALIDATE_URL)){
+    $msgliens.='<span class="alert-warning text-danger"> ** Saisissez une url valide</span>';
+  }  
 
- //else
-    {        
-        $data_insert = $bdd->prepare("UPDATE projets SET id_projet = :id_projet,titre_projet = :titre_projet,liens = :liens,contenu= :contenu, WHERE id_projet = $id_projet");
-        $_GET['action'] = 'affichage';
-        $validate .= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>Le projet n° <strong>$id_projet</strong> a bien été modifié !!</div>"; 
-    }
-    
-    foreach($_POST as $key => $value)
-    {        if($key != 'etat') // on ejecte le champs 'hidden' du projet
-        { $data_insert->bindValue(":$key", $value, PDO::PARAM_STR); } 
-    }
-    $data_insert->bindValue(":etat", $photo_bdd, PDO::PARAM_STR); 
-    $data_insert->execute();
+//------------j'insert en bdd-------
+if(empty($msgtitre)&& empty($msgContenu)&& empty($msgliens)){
+  //------------on vient d'effectuer une protection contre inject°----
+         foreach($_POST as $indice => $valeur){
+            $_POST[$indice] = htmlspecialchars($valeur, ENT_QUOTES);
+        } 
+
+        $donnees=$bdd->prepare("REPLACE INTO projets VALUES (:id_projet, :titre_projet, :liens, :contenu)", array(
+                ':id_projet' => $_POST['id_projet'],
+                ':titre_projet' => $_POST['titre_projet'],
+                ':liens' => $_POST['liens'],
+                ':contenu' => $_POST['contenu'],
+                
+        ));
+        $donnees->bindValue(':id_projet', $_POST['id_projet'],PDO::PARAM_STR);        
+        $donnees->bindValue(':titre_projet', $_POST['titre_projet'],PDO::PARAM_STR);
+        $donnees->bindValue(':liens',$_POST['liens'],PDO::PARAM_STR);
+        $donnees->bindValue(':contenu', $_POST['contenu'],PDO::PARAM_STR); 
+        $donnees->execute() ;   
+
+        $successProjet .= '<div class="alert alert-success">L\'enregistrement a bien été réalisé en BDD.</div>';
+    }// if(empty($msg)){
+
 }
 
+
+//-----fin if($_POST)
 
                            
 ?>                  
@@ -44,56 +70,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </head>
 <body>
 
-  <!-- <div class="description">
-  
-<div class="form-check form-check-inline"method="post">
 
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Emploi">
-  <label class="form-check-label" for="inlineRadio1">Emploi</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Formation">
-  <label class="form-check-label" for="inlineRadio2">Formation</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-  <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
-</div> -->
-
-                <!-- </div>
-
-
-                </div> -->
-
-    <!-- <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername" name="Titre"></label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="Titre"></span>
-        </div>
-        <input type="text" class="form-control" name="Titre" placeholder="Titre" aria-describedby="validationTooltipUsernamePrepend">           
-    </div>
-  </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername" name="Liens"></label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="Liens"></span>
-        </div>
-        <input type="text" class="form-control" name="Liens" placeholder="liens" aria-describedby="validationTooltipUsernamePrepend">           
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationTooltip03"></label>
-      <input type="text" class="form-control" name="contenu" placeholder="contenu">      
-  </div>
-  </div> 
-  
-
-
-  <button class="btn btn-primary" type="submit">envoi</button>-->
 <?php
 if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
   ?>
@@ -108,18 +85,24 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
 ?>
 
 <form  method="post" class="container col-md-4">
+  <?php echo $successProjet ?>
+   <input type="hidden" name="id_projet">
   <div class="form-group">
     <label for="formGroupExampleInput">Titre</label>
-    <input type="text" class="form-control" name="" placeholder="Example input">
+    <?php echo $msgTitre;?>
+    <input type="text" class="form-control" name="titre_projet" placeholder="">
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput">description</label>
-    <input type="text" class="form-control" name="" placeholder="Example input">
+    <?php echo $msgContenu;?>
+    <input type="text" class="form-control" name="contenu" placeholder="">
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Lien</label>
-    <input type="text" class="form-control" name="f" placeholder="Another input">
+    <?php echo $msgliens;?>
+    <input type="text" class="form-control" name="liens" placeholder="">
   </div>
+  <button type="submit" class="btn alert-primary">enregistrer</button>
 </form>
 
 

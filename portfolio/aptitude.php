@@ -54,8 +54,8 @@ AJAX
 </div>
 </div>
 <div class="images">
-   <img src="photo/clint-bustrillos.jpg"alt="" height="100",wigth="320"  >
-<img src="photo/travail-chantier.jpg" alt="" height="100",wigth="320" >
+   <img src="photo/clint-bustrillos.jpg"alt="" height="100",width="320"  >
+<img src="photo/travail-chantier.jpg" alt="" height="100",width="320" >
 </div>
 </section>
 <div class="container "></div>

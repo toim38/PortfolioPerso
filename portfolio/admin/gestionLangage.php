@@ -51,9 +51,10 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
   <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
   </li>
+  
 </ul>
 <table class="table table-striped table-dark">
-  <thead>
+  <thead class="listeLangages">
     <tr>
       <th scope="col">HTML</th>
       <th scope="col">CSS</th>

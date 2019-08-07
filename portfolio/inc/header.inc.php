@@ -17,33 +17,30 @@ require_once "init.inc.php"
     <title>ACCUEIL</title>
 </head>
 <header class="container-fluid">
-    <h1 class="text-center">
-      <div class="alert alert-dark" role="alert"> PORTFOLIO <br><em>ZAROUEL Touhami</em>
-      </div>
-      DEVELOPPEUR INTEGRATEUR WEB junior
-    </h1>
-    <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
-      <a class="navbar-brand" href="index.php">Mon Portfolio</a>
+  <div class="alert alert-" role="alert"> 
+    <h1 class="text-center">PORTFOLIO <br><em>ZAROUEL <a href="admin/connexion.php" id="admin">Touhami</a></em></h1>
+    <h3>DEVELOPPEUR INTEGRATEUR WEB junior</h3>
+  </div>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="<?=URL?>curriculum vitae.php">curriculum vitae<span class="sr-only">(current)</span></a>
+            <a class="nav-link text-dark" href="<?=URL?>curriculum vitae.php">curriculum vitae<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>projets.php">Projets</a>
+            <a class="nav-link text-dark" href="<?=URL?>projets.php">Projets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>aptitude.php">Aptitude</a>
+            <a class="nav-link text-dark" href="<?=URL?>aptitude.php">Aptitude</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>contact.php">Contact</a>
+          <li class="nav-item ">
+            <a class="nav-link text-dark" href="<?=URL?>contact.php">Contact</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?=URL?>/admin/connexion.php">Administrateur</a>
-          </li>
+
 
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

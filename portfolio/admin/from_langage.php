@@ -41,13 +41,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
   <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
 </div>
-
-                </div>
-                
-
-
-
-
+                </div>            
 
     <div class="col-md-4 mb-3">
       <label for="validationTooltipUsername" name="nouveau langage"></label>
