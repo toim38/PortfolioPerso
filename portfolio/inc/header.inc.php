@@ -17,11 +17,11 @@ require_once "init.inc.php"
     <title>ACCUEIL</title>
 </head>
 <header class="container-fluid">
-  <div class="alert alert-" role="alert"> 
+  <div class="alert bg-white" role="alert"> 
     <h1 class="text-center">PORTFOLIO <br><em>ZAROUEL <a href="admin/connexion.php" id="admin">Touhami</a></em></h1>
     <h3>DEVELOPPEUR INTEGRATEUR WEB junior</h3>
   </div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-primary bg-white">
      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@ require_once "init.inc.php"
             <a class="nav-link text-dark" href="<?=URL?>aptitude.php">Aptitude</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link text-dark" href="<?=URL?>contact.php">Contact</a>
+            <a class="nav-link text-dark" href="<?=URL?>form_contact.php">Contact</a>
           </li>
 
 

@@ -40,11 +40,20 @@ if($_POST)
           $newVisiteur->bindvalue(':contact_email', $contact_email, PDO::PARAM_STR);
           $newVisiteur->bindvalue(':message', $message, PDO::PARAM_STR);  
           $newVisiteur->execute();
-          $msgSuccess .='<div class="alert alert-success">Votre message a bien été envoyé</div>';  
+          $msgSuccess .='<div class="alert alert-success">Votre message a bien été envoyé</div>'; 
+          
+          // $_SESSION['success'] = 1;
+          // $headers  = 'MIME-Version: 1.0' . "\r\n";
+          // $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+          // $headers .= 'FROM:' . htmlspecialchars($_POST['contact_email']);
+          // $to = 'eltzarou@laposte.net'; // Insérer votre adresse email ICI
+          // $subject = 'Message envoyé par ' . htmlspecialchars($_POST['contact_nom']) .' - <i>' . htmlspecialchars($_POST['contact_email']) .'</i>';
+          // $message_content;
         } 
   }
   //fin if($_POST)
 
+  //liens avec boite mail-perso
 
 ?>
 

@@ -10,33 +10,40 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
 {
     //j'affiche le résultat :
       $contenu .='<tr>';
-      $contenu .='<th scope="row">'.$langage['id_lang'].'</th>';
+      // $contenu .='<th scope="row">'.$langage['id_lang'].'</th>';
       $contenu .='<td>'. $langage['id_lang'].'</td>';
-      $contenu .='<td>'. $langage['lang_level'].'</td>';
       $contenu .='<td>'. $langage['langage'].'</td>';
-      $contenu .='<td><i class="far fa-edit text-warning"></i></td>';
-      $contenu .='<td><i class="fas fa-trash text-danger"></i></td>';
+      $contenu .='<td>'. $langage['langLevel'].'</td>';
+      $contenu.='<td><a href="form_langage.php?action=modifier&id='.$langage['id_lang'].'" class="card-link"><i class="fas fa-pen-square text-warning fa-2x"></i></a></td>';
+      $contenu.='<td><a href="?action=supp&id='.$langage['id_lang'].'" class="card-link"><i class="fas fa-trash-alt text-danger fa-2x"></i></a></td>';
       $contenu .='</tr>';
 }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--cdn fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
     <title>gestion Langage</title>
 </head>
 <body>
   <h1 class="text-center text-primary m-5">Gestion de langage</h1>
+<div class="row">
+<div class="col-md-6">
+<a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-warning offset-8"></i></a>         
+</div>
 
+<div class="col-md-6">
+<a href="form_langage.php">Ajout</a>         
+</div>
+</div>
 <div class="container">
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -56,11 +63,10 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
 <table class="table table-striped table-dark">
   <thead class="listeLangages">
     <tr>
-      <th scope="col">HTML</th>
-      <th scope="col">CSS</th>
-      <th scope="col">PHP</th>
-      <th scope="col">SQL</th>
-      <th colspan="2"></th>
+      <th scope="col">N°</th>
+      <th scope="col">Langage</th>
+      <th scope="col">Niveau</th>
+      <th colspan="2">Action</th> 
     </tr>
   </thead>
   <tbody>

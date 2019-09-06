@@ -12,6 +12,15 @@ $successProjet='';
 // echo '</pre>';
 //-----requete de modification et ajout en bdd------------------
 
+// 1 -  Je récupère les infos pour la modification
+if(isset($_GET['action']) && $_GET['action'] == 'modifier' && ($_GET['id'])){
+    $req = $bdd->prepare("SELECT * FROM projets WHERE id_projet = :id_projet");
+    $req->bindParam(':id_projet', $_GET['id']);
+    $req->execute();
+    if($req->rowCount()> 0){
+        //Je récupère des infos en BDD pour afficher dans le formulaire de modification
+        $projet_update = $req->fetch(PDO::FETCH_ASSOC);
+    }
 //---insertion en bdd
 if($_POST){
   if(empty($titre_projet)||iconv_strlen($titre_projet)<2||iconv_strlen($titre_projet)>100){
@@ -45,12 +54,12 @@ if(empty($msgtitre)&& empty($msgContenu)&& empty($msgliens)){
         $donnees->execute() ;   
 
         $successProjet .= '<div class="alert alert-success">L\'enregistrement a bien été réalisé en BDD.</div>';
-    }// if(empty($msg)){
+    }
 
 }
 
 
-//-----fin if($_POST)
+}//-----fin if($_POST)
 
                            
 ?>                  
@@ -70,7 +79,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </head>
 <body>
 
-
+<!-- J'adapte le titre du formulaire selon l'action (ajout ou modification) -->
 <?php
 if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
   ?>
@@ -83,24 +92,24 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
 <?php
 }
 ?>
-
+<!--COTE VISUEL------------------------>
 <form  method="post" class="container col-md-4">
   <?php echo $successProjet ?>
-   <input type="hidden" name="id_projet">
+   <input type="hidden" name="id_projet" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $projet_update['id_projet']; } else { echo ""; }?>">
   <div class="form-group">
     <label for="formGroupExampleInput">Titre</label>
     <?php echo $msgTitre;?>
-    <input type="text" class="form-control" name="titre_projet" placeholder="">
+    <input type="text" class="form-control" name="titre_projet" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $projet_update['titre_projet']; } else { echo ""; }?>">
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput">description</label>
+    <label for="formGroupExampleInput">contenu</label>
     <?php echo $msgContenu;?>
-    <input type="text" class="form-control" name="contenu" placeholder="">
+    <input type="text" class="form-control" name="contenu" placeholder="" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $projet_update['contenu']; } else { echo ""; }?>">
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Lien</label>
     <?php echo $msgliens;?>
-    <input type="text" class="form-control" name="liens" placeholder="">
+    <input type="text" class="form-control" name="liens" placeholder="" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $projet_update['liens']; } else { echo ""; }?>">
   </div>
   <button type="submit" class="btn alert-primary">enregistrer</button>
 </form>

@@ -29,11 +29,10 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
     //j'affiche le résultat :
     $contenu .='<tr>';
       // $contenu .='<th scope="row">'.$projet['id_projet'].'</th>';
-      $contenu .='<td>'.$contact['contact_appellation'].'</td>';
-      $contenu .='<td>'.$contact['contact_adresse'].'</td>';
+      $contenu .='<td>'.$contact['contact_nom'].'</td>';
+      $contenu .='<td>'.$contact['contact_prenom'].'</td>';
       $contenu .='<td>'.$contact['contact_email'].'</td>';
       $contenu .='<td>'.$contact['message'].'</td>';
-      $contenu .='<td><a href="form_projet.php?action=modifier&id='.$contact['id_contact'].'"><i class="far fa-edit text-warning"></i></td>';
       $contenu .='<td><a href="?action=supprimer&id='.$contact['id_contact'].'"><i class="fas fa-trash text-danger"></i></a></td>';
     $contenu .='</tr>';
 }
@@ -85,11 +84,10 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
   <thead>
     <tr>
       <!-- <th scope="col">n° du projet</th> -->
-      <th scope="col">appellation</th>
-      <th scope="col">adresse</th>
+      <th colspan="2">Contact</th>
       <th scope="col">email</th>
       <th scope="col">message</th>
-      <th colspan="2">Action</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>

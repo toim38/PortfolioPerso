@@ -14,25 +14,36 @@ while($formation = $resultat->fetch(PDO::FETCH_ASSOC)){
       $contenu .='<td>'.$formation['form_intitule'].'</td>';
       $contenu .='<td>'.$formation['form_annee'].'</td>';
       $contenu .='<td>'.$formation['form_niveau'].'</td>';
-      $contenu .='<td><i class="far fa-edit text-warning"></i></td>';
-      $contenu .='<td><i class="fas fa-trash text-danger"></i></td>';
-      $contenu .='<td><a href="?action=modifier&id='.$formation['id_projet'].'"><i class="far fa-edit text-warning"></i></a></td>';
-      $contenu .='<td><a href="?action=supprimer&id='.$formation['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
-      $contenu .='</tr>';
+      $contenu .='<td><a href="form_formation.php?action=modifier&id='.$formation['id_formation'].'"><i class="far fa-edit text-warning"></i></a></td>';
+      $contenu .='<td><a href="?action=supprimer&id='.$formation['id_formation'].'"><i class="fas fa-trash text-danger"></i></a></td>';
 }
-    
 ?>
+<?php
+if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
+?>
+<h3 class="text-center text-warning">Form de modif formation</h3>
+<?php
+}else {
+?>
+  <h3 class="text-center text-primary">Ajoutez une formation</h3>
 
+<?php
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="../css/style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>gestionFormation</title>
+    <!-- Lien BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Lien CSS perso -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!--cdn fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 <body>
 <h1 class="text-center text-primary m-5">Gestion de formation</h1>
@@ -42,7 +53,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <a class="nav-link active" href="#">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../admin/form_experience.php">formulaire d'ajout</a>
+    <a class="nav-link" href="../admin/form_experience.php">formulaire d'ajout de form</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="../curriculum vitae.php">cv</a>
@@ -52,50 +63,22 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
   </li>
 </ul>
 
-<table class="table table-striped table-dark">
+<table class="table table-dark">
   <thead>
-    
-    <caption>Gestion formation</caption>
     <tr>
-        <th scope="col">n°id</th>
-        <th scope="col">intitulé</th>
-        <th scope="col">année</th>
-        <th scope="col">niveau acquis</th>
-        <th scope="col">Contenu</th>
+      <th scope="col">Intitulé</th>
+      <th scope="col">Année</th>
+      <th scope="col">Niveau acquis</th>
+      <th scope="col">Contenu</th>
+      <th colspan="2">Action</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-        <th scope="row">1</th>
-        <td>technicien hygiéniste</td>
-        <td>2005</td>
-        <td>4</td>
-        <td>certiphyto/certibiocide</td>
-        <td></td>
-    </tr>  
-        
-   
-    <tr>
-        <th scope="row">3</th>
-        <td>developpeur-integrateur web junior</td>
-        <td>2018</td>
-        <td>3</td>
-        <td>langage HTML.CSS.PHP.AJAX.SYMFONY.JAVASRIPT</td>
-        <td></td>
+<?php echo $contenu;?>
     </tr>
-<tr>
-        <th scope="row">2</th>
-        <td>Assistant utilisateur micro-informatique</td>
-        <td>2001</td>
-        <td>4</td>
-        <td>technicien de maintenance informatique</td>
-        <td></td>       
-        
-
-    </tr> 
-
-
+  </tbody>
 </table>
-
- </thead>
 
 </div>
 </body>
