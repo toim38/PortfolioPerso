@@ -1,59 +1,56 @@
 <?php
 require_once "inc/init.inc.php";
+require_once "Contact.class/Contact.php";
 // variable d'affichage de message erreur;
 $preError="";
 $nomError="";
 $mailError="";
+$messageError="";
 // variable d'affichage de message succes;
 $msgSuccess="";
 
 extract($_POST);
 // echo '<pre>';echo var_dump($_POST);echo '</pre>'; 
-
-//verification des champs du formulaire
-if($_POST)
-  {
-    if(empty($contact_prenom) || iconv_strlen($contact_prenom)<3 || iconv_strlen($contact_prenom)>50)    
-        { 
+if($_POST){
+  // verificationb des champs du formulaire en procedural
+    if(empty($contact_prenom) || iconv_strlen($contact_prenom)<3 || iconv_strlen($contact_prenom)>50){ 
           $preError.='<small class="text-danger">saisi un prenom entre 3 et 20 caracteres</small>'; 
-         } 
-    if(empty($contact_nom) || iconv_strlen($contact_nom)<3 || iconv_strlen($contact_nom)>50)      
-       { 
+    } 
+    if(empty($contact_nom) || iconv_strlen($contact_nom)<3 || iconv_strlen($contact_nom)>50){ 
          $nomError.='<small class="text-danger">saisi un nom entre 3 et 20 caracteres</small>'; 
-        }
+    }
 
-    if(!filter_var($contact_email, FILTER_VALIDATE_EMAIL))     
-      { 
+    if(!filter_var($contact_email, FILTER_VALIDATE_EMAIL)){ 
         $mailError .='<small class="text-danger">saisi un email valide</small>'; 
-      }
+    }
 
-    if(empty($message)|| iconv_strlen($message)>255)     
-      { 
-        $mailError .='<small class="text-danger">saisi un texte de 255 maxi pour être valide</small>';
-      }
-    //inserer en BDD si pas d'erreur
-    if(empty($nomError) && empty ($preError) && empty($mailError))         
-        { 
-          $newVisiteur = $bdd->prepare("INSERT INTO contact(contact_nom,contact_prenom,contact_email,message) VALUES (:contact_nom,:contact_prenom,:contact_email,:message)");
-          $newVisiteur->bindvalue(':contact_nom', $contact_nom, PDO::PARAM_STR);
-          $newVisiteur->bindvalue(':contact_prenom', $contact_prenom, PDO::PARAM_STR);
-          $newVisiteur->bindvalue(':contact_email', $contact_email, PDO::PARAM_STR);
-          $newVisiteur->bindvalue(':message', $message, PDO::PARAM_STR);  
-          $newVisiteur->execute();
-          $msgSuccess .='<div class="alert alert-success">Votre message a bien été envoyé</div>'; 
-          
-          // $_SESSION['success'] = 1;
-          // $headers  = 'MIME-Version: 1.0' . "\r\n";
-          // $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-          // $headers .= 'FROM:' . htmlspecialchars($_POST['contact_email']);
-          // $to = 'eltzarou@laposte.net'; // Insérer votre adresse email ICI
-          // $subject = 'Message envoyé par ' . htmlspecialchars($_POST['contact_nom']) .' - <i>' . htmlspecialchars($_POST['contact_email']) .'</i>';
-          // $message_content;
-        } 
-  }
-  //fin if($_POST)
+    if(empty($contact_message)|| iconv_strlen($contact_message)>255){ 
+        $messageError .='<small class="text-danger">saisi un texte de 255 maxi pour être valide</small>';
+    }
 
-  //liens avec boite mail-perso
+     // insertion des DONNEES en POO 
+     if(empty($nomError) && empty($preError) && empty($mailError)){
+       foreach($_POST as $indices =>$valeurs){
+         $_POST[$indices] =htmlspecialchars($valeurs, ENT_QUOTES);
+       }//fin  foreach($_POST as $indice =>$valeur)
+
+       //je créé un nouvel objet de ma classe Contact
+       $contact = new Contact();
+
+       // j'utilise la méthode contactAction() de ma classe 
+       $contact->contactAction($contact_prenom, $contact_nom, $contact_email, $message);
+
+      // Je réinitialisationdeschamps
+       unset($contact_prenom);
+       unset($contact_nom);
+       unset($contact_email);
+       unset($contact_message);
+
+       $msgSuccess .= '<div class="alert alert-success">Votre message à bien été enregistré</div>';
+     } // fin if(empty($nomError) && empty($preError) && empty($mailError)
+
+}//fin if($_POST){
+
 
 ?>
 

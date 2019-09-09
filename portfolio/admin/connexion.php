@@ -60,7 +60,8 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <input type="password" class="form-control m-2" name="umdp" placeholder="Password">
   </div>
   
-  <button type="submit" class="btn btn-primary m-3">ENREGISTRER</button>
+  <a href="?action=connexion" type="submit" class="btn btn-primary m-3" >Connexion</a>
+  
 </form>
 </div>
 

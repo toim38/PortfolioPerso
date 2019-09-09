@@ -2,7 +2,7 @@
 require_once "inc/init.inc.php";
 require_once "inc/header.inc.php";
 ?>
-<main class="container-fluid background-color">
+<main class="container background-color" id="cv">
 
 <img src="photo/cv.jpg"  alt="" >
 
