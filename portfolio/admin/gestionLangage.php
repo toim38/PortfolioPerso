@@ -36,30 +36,15 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
 <body>
   <h1 class="text-center text-primary m-5">Gestion de langage</h1>
 <div class="row">
-<div class="col-md-6">
-<a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-warning offset-8"></i></a>         
+  <div class="col-md-6 mb-3">
+    <a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-warning offset-8"></i></a>         
+  </div>
+  <div class="col-md-6 mb-3">
+    <a href="form_langage.php"  class="btn btn-outline-info">Ajout</a>         
+  </div>
 </div>
 
-<div class="col-md-6">
-<a href="form_langage.php">Ajout</a>         
-</div>
-</div>
 <div class="container">
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../admin/from_langage.php">formulaire d'ajout</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../curriculum vitae.php">cv</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-  
-</ul>
 <table class="table table-striped table-dark">
   <thead class="listeLangages">
     <tr>

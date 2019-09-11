@@ -10,9 +10,9 @@ $msgDescription='';
 $msgEntreprise='';
 $successmsg ='';
 
-echo '<pre style="background:red;color:white;">';
-print_r($_POST);
-echo '</pre>';
+// echo '<pre style="background:red;color:white;">';
+// print_r($_POST);
+// echo '</pre>';
 
 //----3/----recuperation des donnees pour bdd--------------
 //---je recupére les infos de URL càd je verifie que 'action' existe ds mon URL et que cette act° est = 'à 'modifier'.et en + je m'assure que l URL a indice 'id'

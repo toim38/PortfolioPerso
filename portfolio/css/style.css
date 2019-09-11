@@ -3,55 +3,52 @@
  } 
   
 .background-color {
-                    background-color: #E1B07E;
-                    }
+    background-color: aquamarine;
+}
   
-  body{ 
-      min-height: 1000px;
-      min-width: 850px;
-      background-color: #E1B07E;
-        text-align: center;
+  body{      
+      background-repeat: no-repeat;
+      text-align: center; 
         font-family: fantasy;
-        margin: 0 auto;
+        padding: 0;
+        background-color: aquamarine;
      }
     @media screen and (max-width: 720px){
         
         body{
-            
              background-color: orange;
             text-align: center;
             font-family: cursive;
             display: flex; 
-            }
-                                        }
+        }
+        }
 
 textarea{
     text-align: center;
         }
 img{
-    width: 1250px;
-    height: 750px;
+    width: 1350px;
+    height: 850px;
     margin: 0 auto ;
     position: relative;
-    }
+}
 
 .picture img{
-    width: 500px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     margin:0 auto;
-
-
-}
+    position: absolute;
+            }
 .images img{
-    width: 500px;
-    height: 300px;
+    width: 300px;
+    height: 200px;
     margin:0 auto;
     position: relative;
-}
+        }
 .caroussel-slide{
 height: 100vh;
 width: 450vh;
-}
+                }
 .progress{
     margin: 0 auto;
     height: 3vh;
@@ -60,38 +57,39 @@ width: 450vh;
 }
 .langage{
 margin: 1rem;
-
+color:white; 
 }
 .clear{
     clear: both;
 }
-/* .container-fluid{
-    width: 100%;
-    height: 100%;
-    margin: 0 auto; */
+.container-fluid{
+    width: 1300px;
+    height: 700px;
+    margin: 0 auto;
 }
-img{
+.container-fluid,img{
     width:88%;
     height: 85%;
 }
 .card-body{
     background:#3e8fbe;
-            }
+}
 /* BOUTON CONNEXION ADMIN */
 #admin{
  text-decoration:none;
   color: black;
   cursor: auto;
-        }    
-/*.container{
-    /*height: 100%;
-    width: 100%;
+}    
+.container{
+    height: 1200px;
+    width: 1300px;
     margin: 0 auto;
-            }*/
-article{
-    text-align: horizontal;
-    background-color:brique;    
-        }
-        h2,h1{
-            background-color: coral;
-        }
+    position:relative; 
+
+}
+ body#accueilAdmin{
+     width: 85%;
+     height: 90%;
+    background-image: url(/photo/landscape.jpg);
+ }
+

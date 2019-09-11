@@ -3,7 +3,9 @@
   require_once "../inc/init.inc.php";
 //je créer des variables avec les names 
 extract($_POST);
-
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
 // je me connecte à ma table user 
 $resultat=$bdd->query("SELECT*FROM user");
 
@@ -60,8 +62,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <input type="password" class="form-control m-2" name="umdp" placeholder="Password">
   </div>
   
-  <a href="?action=connexion" type="submit" class="btn btn-primary m-3" >Connexion</a>
-  
+  <button type="submit" class="btn btn-primary m-3">ENREGISTRER</button>
 </form>
 </div>
 

@@ -1,16 +1,8 @@
 <?php
 require_once "../inc/init.inc.php";
-if(isset($_POST['connexion'])) {
-                                  if(empty($_POST['pseudo'])) {
-                                              echo "Le champ Pseudo est vide.";
-    }                                                                   else {
-        // on vérifie maintenant si le champ "Mot de passe" n'est pas vide"
-if(empty($_POST['mdp'])) {
-            echo "Le champ Mot de passe est vide.";
-        } else {
-            // les champs sont bien posté et pas vide, on sécurise les données entrées par le membre:
-            $Pseudo = htmlentities($_POST['pseudo'], ENT_QUOTES, "ISO-8859-1"); // le htmlentities() passera les guillemets en entités HTML, ce qui empêchera les injections SQL
-            $MotDePasse = htmlentities($_POST['mdp'], ENT_QUOTES,
+
+
+
 
 
 ?>
@@ -27,12 +19,12 @@ if(empty($_POST['mdp'])) {
 </head>
 
 
-<body>
+<body id="accueilAdmin">
+<div class="page">
+<img src="/photo/graphic-3982576_1280.png">
 <h1 class="text-center text-primary alert alert-warning m-5">Accueil Admin</h1>
-<div class="row">
-  <a href="?action=deconnexion" class="btn btn-danger offset-md-10">Déconnexion</a>
-</div>
 <section class="tabledesmatieres" >
+
 
 <div class=" container card m-10" style="width: 28rem;X">
   <ul class="list-group list-group-flush">
@@ -54,5 +46,6 @@ if(empty($_POST['mdp'])) {
   </ul>
 </div>
 </section>
+</div>
 </body>
 </html>

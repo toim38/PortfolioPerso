@@ -7,9 +7,10 @@ $msgTitre='';
 $msgContenu='';
 $msgliens='';
 $successProjet='';
-// echo '<pre style="background:black;color:white;">';
-// print_r($_POST);
-// echo '</pre>';
+$projet_update='';
+echo '<pre style="background:black;color:white;">';
+print_r($_POST);
+echo '</pre>';
 //-----requete de modification et ajout en bdd------------------
 
 // 1 -  Je récupère les infos pour la modification
@@ -23,22 +24,20 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier' && ($_GET['id'])){
     }
 //---insertion en bdd
 if($_POST){
-  if(empty($titre_projet)||iconv_strlen($titre_projet)<2||iconv_strlen($titre_projet)>100){
+  if(empty($titre_projet) || iconv_strlen($titre_projet) < 2 || iconv_strlen($titre_projet) > 100){
     $msgTitre.='<span class=" alert-warning text-danger"> ** Saisissez un titre valide (100 caractère max)</span>';
   }  
-  if(empty($contenu) ||iconv_strlen($contenu)>400){
+  if(empty($contenu) || iconv_strlen($contenu) > 400){
     $msgContenu.='<span class="alert-warning text-danger"> ** La description de doit pas dépasser 400 caractères</span>';
   }  
-  if(empty($liens) ||!filter_var($liens, FILTER_VALIDATE_URL)){
+  if(empty($liens) || !filter_var($liens, FILTER_VALIDATE_URL)){
     $msgliens.='<span class="alert-warning text-danger"> ** Saisissez une url valide</span>';
   }  
 
 //------------j'insert en bdd-------
 if(empty($msgtitre)&& empty($msgContenu)&& empty($msgliens)){
   //------------on vient d'effectuer une protection contre inject°----
-         foreach($_POST as $indice => $valeur){
-            $_POST[$indice] = htmlspecialchars($valeur, ENT_QUOTES);
-        } 
+         
 
         $donnees=$bdd->prepare("REPLACE INTO projets VALUES (:id_projet, :titre_projet, :liens, :contenu)", array(
                 ':id_projet' => $_POST['id_projet'],
@@ -113,11 +112,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
   </div>
   <button type="submit" class="btn alert-primary">enregistrer</button>
 </form>
-
-
-
-
-
-</form>   
+  
 </body>
 </html>

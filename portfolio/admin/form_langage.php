@@ -2,9 +2,9 @@
 require_once "../inc/init.inc.php";
 extract($_POST);
 extract($_GET);
-echo '<pre style="background:red;color:white;">';
-print_r($_POST);
-echo '</pre>';
+// echo '<pre style="background:red;color:white;">';
+// print_r($_POST);
+// echo '</pre>';
 //variables de msg erreur
 
 $msglang='';

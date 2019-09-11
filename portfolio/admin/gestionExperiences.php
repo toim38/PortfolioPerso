@@ -74,24 +74,15 @@ else {
     <title>gestionExperiences</title>
 </head>
 <body>
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs mb-3">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <!--<li class="nav-item">
-    <a class="nav-link" href="../admin/form_experience.php">formulaire d'ajout</a>
-  </li>-->
-  <li class="nav-item">
-    <a class="nav-link" href="../curriculum vitae.php">cv</a>
+    <a class="nav-link active" href="accueilAdmin.php">Retour accueil admin</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link" href="form_experience.php" tabindex="-1" aria-disabled="true">Ajouter une expérience</a>
   </li>
 </ul>
 <div class="row">
-<div class="row">
-<a href="form_experience.php" class="btn btn-outline-primary offset-5">Ajout</a>
-</div>
 
 </div>
 <div class="container">
@@ -100,4 +91,5 @@ else {
 </div>
 </div><!-- FIN .row-->
 
- 
+  </body>
+  </html>

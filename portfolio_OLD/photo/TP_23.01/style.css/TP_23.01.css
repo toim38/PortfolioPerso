@@ -1,0 +1,50 @@
+       body{
+
+background: greenyellow;}
+
+div#contenaire{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center; background:url (images.tp/img/woddPlank.jpg); }   
+ header{
+background-image: url(images.tp/img/woddPlank.jpg); 
+
+    
+      
+}
+       h1#header{
+height: 20%;
+background:orange ;
+text-align: center;
+border-radius: 85px;
+ float: right;
+clear: both;     }
+ ul{
+              width: 20%;
+              height: 25%;
+              padding: 55px;
+              margin: 5px;
+              border: 0px solid black;
+
+       }
+       h2,h3{
+float: left;
+clear: both;
+width: 20%;
+height: 28%;
+padding: 55px;
+margin:0 auto;
+position: relative;
+       }
+h4,h5,h6{
+float: right no-repeat;
+position: relative;
+width: 20%;
+height: 20%;
+margin: 10%;
+}
+footer{
+text-align: center;
+font-family:  'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}

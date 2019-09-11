@@ -16,6 +16,7 @@ require_once "init.inc.php"
     <link rel="stylesheet" href="css/style.css">
     <title>ACCUEIL</title>
 </head>
+<body id="body_header">
 <header class="container-fluid">
   <div class="alert bg-white" role="alert"> 
     <h1 class="text-center">PORTFOLIO <br><em>ZAROUEL <a href="admin/connexion.php" id="admin">Touhami</a></em></h1>
@@ -29,6 +30,9 @@ require_once "init.inc.php"
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
+            <a class="nav-link text-dark" href="<?=URL?>index.php">index<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
             <a class="nav-link text-dark" href="<?=URL?>curriculum vitae.php">curriculum vitae<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
@@ -39,6 +43,9 @@ require_once "init.inc.php"
           </li>
           <li class="nav-item ">
             <a class="nav-link text-dark" href="<?=URL?>form_contact.php">Contact</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link text-dark" href="<?=URL?>evolution_professionnelle.php">Evolution professionnelles</a>
           </li>
 
 
