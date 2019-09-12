@@ -16,22 +16,20 @@ require_once "init.inc.php"
     <link rel="stylesheet" href="css/style.css">
     <title>ACCUEIL</title>
 </head>
-<body id="body_header">
+<body >
 <header class="container-fluid">
-  <div class="alert bg-white" role="alert"> 
+  <div class="alert bg-rgba" role="alert"> 
     <h1 class="text-center">PORTFOLIO <br><em>ZAROUEL <a href="admin/connexion.php" id="admin">Touhami</a></em></h1>
-    <h3>DEVELOPPEUR INTEGRATEUR WEB junior</h3>
+    <h3 class="text-center">DEVELOPPEUR INTEGRATEUR WEB junior</h3>
   </div>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-white">
+    <nav class="navbar  navbar-expand-lg navbar-primary bg-rgba ">
      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon text text-dark"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link text-dark" href="<?=URL?>index.php">index<span class="sr-only">(current)</span></a>
-          </li>
+          
           <li class="nav-item active">
             <a class="nav-link text-dark" href="<?=URL?>curriculum vitae.php">curriculum vitae<span class="sr-only">(current)</span></a>
           </li>

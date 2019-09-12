@@ -3,7 +3,10 @@ require_once "inc/init.inc.php";
 require_once "inc/header.inc.php";
 ?>
 <main class="container">
-<div class="alert alert-success" role="alert">
+<div class="row">
+<a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8"> Accueil</i></a>
+</div>
+<div class="alert alert-primary" role="alert">
     <h2>RAPPORT language code</h2>
 </div class="row">
  <section class="langage">
@@ -34,10 +37,10 @@ AJAX
 </section>
 
 <section class="row">
-<div class="card m-5" style="width: 20rem;">
+<div class="card offset-1 col-md-4">
   <img src="photo/travail-chantier.jpg" class="card-img-top" alt="...">
    <div class="card-body">
-    <h5 class="card-title">RAPPORT AVEC LE MATERIEL</h5>
+    <h5 class="card-title ">RAPPORT AVEC LE MATERIEL</h5>
   </div>
   <div class="card-body">
     <p class="card-text">Le terrain serait donc d’abord une matière, formée à la suite de processus constitutifs longs, complexes et toujours inachevés,</p> 
@@ -49,7 +52,7 @@ AJAX
     
   </div>
 </div>
-<div class="card m-5" style="width: 20rem;">
+<div class="card offset-2 col-md-4">
   <img src="photo/clint-bustrillos.jpg" class="card-img-top" alt="...">
    <div class="card-body">
     <h5 class="card-title">RAPPORT HUMAIN</h5>

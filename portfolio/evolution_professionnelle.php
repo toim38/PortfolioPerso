@@ -1,5 +1,8 @@
 <?php
 require_once "inc/init.inc.php";
+require_once "inc/header.inc.php";
+
+
 extract($_GET);
 extract($_POST);
 //variables affichage
@@ -11,7 +14,7 @@ $donnees=$bdd->query("SELECT * FROM experiences ORDER BY id_xp DESC");
  //---je recupére les infos de ma table experience en faisant une boucle
  while($xp=$donnees->fetch(PDO::FETCH_ASSOC)){
         $contenu.='<div class=" col-md-4 card m-3" style="width: 18rem;">';
-        $contenu.='<div class="card-body">';
+        $contenu.='<div class="card-body zindex">';
         $contenu.='<h5 class="card-title">'.$xp['poste'].'</h5>';
         $contenu.='<p class="card-text">'.$xp['description'].'</p>';
         $contenu.='</div>';
@@ -41,7 +44,12 @@ $donnees=$bdd->query("SELECT * FROM experiences ORDER BY id_xp DESC");
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <title>Experiences</title>
 </head>
-<body id="evo_pro">
+ 
+
+
+ 
+
+<body>
 <!-- <ul class="nav nav-tabs mb-3">
   <li class="nav-item">
     <a class="nav-link active" href="accueilAdmin.php">Retour accueil admin</a>
@@ -53,11 +61,18 @@ $donnees=$bdd->query("SELECT * FROM experiences ORDER BY id_xp DESC");
 <div class="row">
 
 </div> -->
-<div class="container">
+
+<div class="col-md-12" >
+
+  
+  <!--<img src="photo/landscape.jpg" bg-color="rgba"alt="">-->
+<div class="row">
+<a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8">Accueil</i></a>
+</div>
 <div class="row">
     <?php echo $contenu;?>
 </div>
 </div><!-- FIN .row-->
-
+</div>
   </body>
   </html>

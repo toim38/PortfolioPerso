@@ -3,17 +3,18 @@
  } 
   
 .background-color {
-    background-color: aquamarine;
+    background-color:khaki;
 }
   
   body{      
+      background-image: url(../photo/landscape.jpg);
       background-repeat: no-repeat;
-      text-align: center; 
-        font-family: fantasy;
+      background-size: cover;
+      
         padding: 0;
-        background-color: aquamarine;
+        background-color:khaki;
      }
-    @media screen and (max-width: 720px){
+    /* @media screen and (max-width: 720px){
         
         body{
              background-color: orange;
@@ -21,17 +22,21 @@
             font-family: cursive;
             display: flex; 
         }
-        }
+        } */
+h1,h2{
+    font-family: fantasy;
+    font-size: 42px;
+}
 
 textarea{
     text-align: center;
         }
-img{
-    width: 1350px;
-    height: 850px;
-    margin: 0 auto ;
-    position: relative;
-}
+/*img{
+    width: 85%;
+    height: 80%px;
+    margin: 0 auto ;*/
+    
+
 
 .picture img{
     width: 100px;
@@ -57,39 +62,42 @@ width: 450vh;
 }
 .langage{
 margin: 1rem;
-color:white; 
+color:black;
 }
-.clear{
-    clear: both;
-}
-.container-fluid{
-    width: 1300px;
-    height: 700px;
-    margin: 0 auto;
-}
+
 .container-fluid,img{
     width:88%;
     height: 85%;
 }
-.card-body{
-    background:#3e8fbe;
+.card{
+    background: khaki;
 }
+
 /* BOUTON CONNEXION ADMIN */
 #admin{
  text-decoration:none;
   color: black;
   cursor: auto;
 }    
-.container{
+.col-md-12{
     height: 1200px;
-    width: 1300px;
-    margin: 0 auto;
-    position:relative; 
+    width: 1300px;   
+    position:absolute; 
+    background:url(/photo/landscape.jpg);
 
 }
- body#accueilAdmin{
-     width: 85%;
-     height: 90%;
-    background-image: url(/photo/landscape.jpg);
- }
+ 
 
+.navbar-toggler{
+background-color: khaki;
+position: relative;
+
+}
+.container{
+    height:85%;
+    width: 100%;
+
+}
+footer{
+    color:greenyellow;
+}

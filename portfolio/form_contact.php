@@ -1,6 +1,9 @@
 <?php
 require_once "inc/init.inc.php";
 require_once "admin/Contact.php";
+
+
+
 // variable d'affichage de message erreur;
 $preError="";
 $nomError="";
@@ -71,8 +74,11 @@ if($_POST)
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>formulaire contact</title>
 </head>
-<body>
+<body id="contact" >
 <div class="container mt-5">
+<div class="row">
+<a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8">Accueil</i></a>
+</div>
 <!-- formulaire -->
  <form action="" method="post">
  <?php echo $msgSuccess; ?>
