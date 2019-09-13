@@ -74,7 +74,7 @@ else {
   <h1 class="text-center text-primary m-5" >Gestion de langages</h1>
 <div class="row">
   <div class="col-md-6 mb-3">
-    <a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-warning offset-8"></i></a>         
+    <a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-white offset-8"></i></a>         
   </div>
   <div class="col-md-6 mb-3">
     <a href="form_langage.php"  class="btn btn-outline-info">Ajout</a>         

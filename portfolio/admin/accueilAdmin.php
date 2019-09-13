@@ -1,10 +1,6 @@
 <?php
 require_once "../inc/init.inc.php";
 
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,16 +11,14 @@ require_once "../inc/init.inc.php";
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Accueil Admin</title>
+    <title> Touhami : Accueil Admin</title>
 </head>
-
 
 <body id="accueilAdmin">
 <div class="page">
 <img src="/photo/graphic-3982576_1280.png">
 <h1 class="text-center text-primary alert alert-warning m-5">Accueil Admin</h1>
 <section class="tabledesmatieres" >
-
 
 <div class=" container card m-10" style="width: 28rem;X">
   <ul class="list-group list-group-flush">

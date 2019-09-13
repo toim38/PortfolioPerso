@@ -78,12 +78,6 @@ while($year >= $century){
         
 }//FIN if($_POST)
 
-
-
-
-
-
-
 ?>
 <!----------on fait le visuel------------->
 <!DOCTYPE html>

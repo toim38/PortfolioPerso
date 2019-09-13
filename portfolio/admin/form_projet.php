@@ -54,16 +54,9 @@ if(empty($msgtitre)&& empty($msgContenu)&& empty($msgliens)){
 
         $successProjet .= '<div class="alert alert-success">L\'enregistrement a bien été réalisé en BDD.</div>';
     }
-
-}
-
-
-}//-----fin if($_POST)
-
-                           
-?>                  
-
-
+  }
+}//-----fin if($_POST)                          
+?>           
 
 <!DOCTYPE html>
 <html lang="fr">

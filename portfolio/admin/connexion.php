@@ -32,7 +32,6 @@ verification des champs de mon formulaire.
 
  }
 //fin if($_POST)
-
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +43,7 @@ verification des champs de mon formulaire.
 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>connexion admin</title>
+    <title>Touhami : connexion admin</title>
 </head>
 <body>
 <div class="alert alert-dark" role="alert">
