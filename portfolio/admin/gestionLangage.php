@@ -1,7 +1,11 @@
 <?php
 require_once "../inc/init.inc.php";
-$contenu ="";// cette variable me permet d'afficher le résultat de ma boucle dans le HTML
+extract($_POST);
+extract($_GET);
 
+$contenu ="";// cette variable me permet d'afficher le résultat de ma boucle dans le HTML
+$langage ="";
+$validation="";
 //  3 - Je me connecte à la table projets
 $resultat = $bdd->query("SELECT * FROM langages");
 
@@ -18,6 +22,39 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
       $contenu.='<td><a href="?action=supp&id='.$langage['id_lang'].'" class="card-link"><i class="fas fa-trash-alt text-danger fa-2x"></i></a></td>';
       $contenu .='</tr>';
 }
+if(isset($_GET['action'])&& $_GET['action'] =='supp')
+{    
+    $supprimer=$bdd->prepare("DELETE  FROM langages WHERE id_lang = :id_lang");
+    // $supp_prod = $bdd->prepare("DELETE FROM langages WHERE id_lang = :id_lang");
+    $supprimer->bindValue(':id_lang', $id, PDO::PARAM_STR); // $id_lang fait reference à $_GET['id_lang'] (extract)
+    $supprimer->execute();
+ //$supprimer=$bdd->query("DELETE * FROM langages WHERE id_lang = :id_lang"); //array(
+         //':id_lang'=> $_GET['id']); 
+    $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>le langage à bien été supprimé </div>";                              }  
+    
+    //---traitement de modification------
+
+if(isset($_GET['action'])&& $_GET['action'] =='modifier'):
+    
+    $modifier=$bdd->prepare("UPDATE * FROM langages WHERE id = :id");
+    // $supp_prod = $bdd->prepare("UPDATE FROM experiences WHERE id_lang = :id_lang");
+    $modifier->bindValue(':id', $id, PDO::PARAM_STR); // $id_lang fait reference à $_GET['id_lang'] (extract)    $modifier->execute();
+ //$supprimer=$bdd->query("DELETE * FROM langages WHERE id_lang = :id_lang"); //array(
+         //':id_lang'=> $_GET['id']); 
+    $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>le langage   à bien été modifié </div>";                                          
+ endif; 
+?>
+<?php
+if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
+  ?>
+<h3 class="text-center text-warning">Form de modif </h3>
+<?php
+}
+else {
+  ?>
+  <h3 class="text-center text-primary">Ajoutez une experience</h3>
+<?php
+    }
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +68,10 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/style.css">
-    <title>gestion Langage</title>
+    <title>gestion Langages</title>
 </head>
 <body>
-  <h1 class="text-center text-primary m-5">Gestion de langage</h1>
+  <h1 class="text-center text-primary m-5" >Gestion de langages</h1>
 <div class="row">
   <div class="col-md-6 mb-3">
     <a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-warning offset-8"></i></a>         
@@ -45,7 +82,22 @@ while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
 </div>
 
 <div class="container">
-<table class="table table-striped table-dark">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../admin/form_langage.php">formulaire d'ajout</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../curriculum vitae.php">cv</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+  
+</ul>
+<table class="table table-striped table-dark" methode="post" >
   <thead class="listeLangages">
     <tr>
       <th scope="col">N°</th>

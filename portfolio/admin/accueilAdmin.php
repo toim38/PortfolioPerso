@@ -32,7 +32,7 @@ require_once "../inc/init.inc.php";
     <a href="gestionProjets.php">Gestion Projets</a>
     </li>
     <li class="list-group-item">
-    <a href="gestionFormation.php">Gestion Formation</a>
+    <a href="gestionFormation.php">Gestion Formations</a>
     </li>
     <li class="list-group-item">
     <a href="gestionLangage.php">Gestion Languages</a>
@@ -41,7 +41,7 @@ require_once "../inc/init.inc.php";
     <a href="gestionExperiences.php">Gestion Expériences</a>
     </li>
     <li class="list-group-item">
-    <a href="gestion_contact.php">Gestion Contact</a>
+    <a href="gestion_contact.php">Gestion Contacts</a>
     </li>
   </ul>
 </div>

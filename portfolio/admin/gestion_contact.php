@@ -61,7 +61,7 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
        
-    <title>gestionProjet</title>
+    <title>Touhami : gestion des contacts</title>
 </head>
 <body>
 <h1 class="text-center text-primary m-5">Gestion des contacts</h1>

@@ -13,7 +13,7 @@ $msglang_level='';
 $lang_modif='';
 //----------2.RECUPERATION DES INFOS
 if(isset($_GET['action']) && $_GET['action']=='modifier'&&($_GET['id'])){
-$req = $bdd->prepare("SELECT*FROM langages WHERE id_lang= :id_lang");
+$req = $bdd->prepare("SELECT * FROM langages WHERE id_lang= :id_lang");
 $req->bindvalue('id_lang',$_GET['id']);
 $req->execute();
 //s'il y a qqchose je le recupere
@@ -47,11 +47,6 @@ if($_POST){
 }//FIN if($_POST)
 
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">

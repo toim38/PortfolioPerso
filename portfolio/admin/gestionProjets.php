@@ -16,8 +16,6 @@ if(isset($action) && $action =='supprimer' && isset($id)){
   $delete->bindValue(':id_projet',$id,PDO::PARAM_INT);
   $delete->execute();
 }
-
-
 // fin requete suppression
 
 //  3/ - Je me connecte à la table projets
@@ -61,7 +59,7 @@ while($projet = $resultat->fetch(PDO::FETCH_ASSOC))
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
        
-    <title>gestionProjet</title>
+    <title>Touhami : gestion des projets</title>
 </head>
 <body>
 <h1 class="text-center text-primary m-5">Gestion des projets</h1>

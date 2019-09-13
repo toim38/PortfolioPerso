@@ -3,7 +3,7 @@ require_once "inc/init.inc.php";
 require_once "inc/header.inc.php";
 ?>
 
-<div class="row" id="bgIndex">
+<div class="row" >
   <section class="container mt-5">
     <img src="photo/entrée_orientale.jpg" alt="image de fond">
   </section>
