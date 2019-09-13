@@ -12,8 +12,8 @@ $contenu ='';
 //------SUPPRESSION PROJET------------
 if(isset($action) && $action =='supprimer' && isset($id)){
 
-  $delete = $bdd->prepare("DELETE FROM projets WHERE id_projet = :id_projet");
-  $delete->bindValue(':id_projet',$id,PDO::PARAM_INT);
+  $delete = $bdd->prepare("DELETE FROM contact WHERE id_contact = :id_contact");
+  $delete->bindValue(':id_contact',$id,PDO::PARAM_INT);
   $delete->execute();
 }
 
@@ -64,7 +64,12 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
     <title>Touhami : gestion des contacts</title>
 </head>
 <body>
-<h1 class="text-center text-primary m-5">Gestion des contacts</h1>
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-white offset-8"></i></a>         
+  </div>
+  </div>
+<!-- <h1 class="text-center text-primary m-5">Gestion des contacts</h1>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link " href="../admin/gestionProjets.php">Gestion projets</a>
@@ -78,7 +83,7 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
   <li class="nav-item">
     <a class="nav-link" href="../gestionExperiences.php.">Gestion expériences</a>
   </li>
-</ul>
+</ul> -->
 <div class="container">
 <table class="table table-striped table-dark mt-5">
   <thead>

@@ -58,6 +58,12 @@ while($projet = $resultat->fetch(PDO::FETCH_ASSOC))
     <title>Touhami : gestion des projets</title>
 </head>
 <body>
+<div class="row">
+  <div class="col-12">
+  <a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-white offset-8"></i></a> 
+  </div>
+</div>
+
 <h1 class="text-center text-primary m-5">Gestion des projets</h1>
 <ul class="nav nav-tabs">
   <li class="nav-item">

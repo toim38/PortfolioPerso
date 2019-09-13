@@ -17,11 +17,11 @@ extract($_POST);
 //verification des champs du formulaire
 if($_POST)
   {
-    if(empty($contact_prenom) || iconv_strlen($contact_prenom)<3 || iconv_strlen($contact_prenom)>50)    
+    if(empty($contact_prenom) || iconv_strlen($contact_prenom)>3 || iconv_strlen($contact_prenom)>50)    
         { 
           $preError.='<small class="text-danger">saisi un prenom entre 3 et 20 caracteres</small>'; 
          } 
-    if(empty($contact_nom) || iconv_strlen($contact_nom)<3 || iconv_strlen($contact_nom)>50)      
+    if(empty($contact_nom) || iconv_strlen($contact_nom)>3 || iconv_strlen($contact_nom)>50)      
        { 
          $nomError.='<small class="text-danger">saisi un nom entre 3 et 20 caracteres</small>'; 
         }

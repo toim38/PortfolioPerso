@@ -53,7 +53,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
     <a class="nav-link active" href="#">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../admin/form_experience.php">formulaire d'ajout de form</a>
+    <a class="nav-link" href="../admin/form_formation.php">formulaire d'ajout de formation</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="../curriculum vitae.php">cv</a>
