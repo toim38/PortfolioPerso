@@ -12,6 +12,7 @@ $msgDescription='';
 $msgEntreprise='';
 $successmsg ='';
 
+
 // echo '<pre style="background:red;color:white;">';
 // print_r($_POST);
 // echo '</pre>';
@@ -83,7 +84,8 @@ if($_POST){
 //a: si pas msg erreur-> enregistrement
 if(empty($msgAnnee1)&& empty($msgAnnee2)&& empty($msgPoste)&&empty($msgDescription)&& empty($msgEntreprise)){
 //b: j'insert en base donnee
-$req=$bdd->prepare("REPLACE INTO experiences VALUES (:id_xp, :annee1, :annee2, :poste, :description,:entreprises)", array                   (':id_xp' => $_POST['id_xp'],
+$req=$bdd->prepare("REPLACE INTO experiences VALUES (:id_xp, :annee1, :annee2, :poste, :description,:entreprises)", array (                 
+               ':id_xp' => $_POST['id_xp'],
                 ':annee1'=> $_POST['annee1'],
                 ':annee2'=> $_POST['annee2'],                
                 ':poste' => $_POST['poste'],
@@ -132,14 +134,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
   <?php
 }
 ?>
+<!-- ergonomie retour vres la page de gestion  -->
 <div class="row">
   <div class="col-12">
 <a href="gestionExperiences.php"><i class="fas fa-arrow-circle-left fa-2x text-white offset-8"></i></a>
   </div>
 </div>
+<!-- FORMULAIRE -->
 
 <div class="container">
-  <form method='post'>
+  <form method='post' >
   <?= $successmsg;?>
     <div class="form-group">
       <input type="hidden"  name="id_xp" class="form-control" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $xp_modif['id_xp']; } else { echo ""; }?>">

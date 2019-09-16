@@ -1,3 +1,5 @@
+
+
 <?php
 require_once "../inc/init.inc.php";
 extract($_GET);
@@ -27,7 +29,7 @@ $donnees=$bdd->query("SELECT * FROM experiences ORDER BY id_xp DESC");
                                             }
 //traitement pour la suppression    
 
-if(isset($_GET['action'])&& $_GET['action'] =='supp')
+if(isset($_GET['action'])&& $_GET['action'] =='supp' && isset($_GET['id']))
 {    
     $supprimer=$bdd->prepare("DELETE  FROM experiences WHERE id_xp = :id_xp");
     // $supp_prod = $bdd->prepare("DELETE FROM produit WHERE id_produit = :id_produit");
@@ -39,9 +41,9 @@ if(isset($_GET['action'])&& $_GET['action'] =='supp')
     
     //---traitement de modification------
 
-if(isset($_GET['action'])&& $_GET['action'] =='modifier'):
+if(isset($_GET['action']) && $_GET['action'] =='modifier'):
     
-    $modifier=$bdd->prepare("UPDATE * FROM experiences WHERE id = :id");
+    $modifier=$bdd->prepare("UPDATE * FROM experiences WHERE id_xp = :id_xp");
     // $supp_prod = $bdd->prepare("UPDATE FROM experiences WHERE id_xp = :id_xp");
     $modifier->bindValue(':id', $id, PDO::PARAM_STR); // $id_xp fait reference à $_GET['id_xp'] (extract)    $modifier->execute();
  //$supprimer=$bdd->query("DELETE * FROM experiences WHERE id_xp = :id_xp"); //array(
@@ -50,7 +52,7 @@ if(isset($_GET['action'])&& $_GET['action'] =='modifier'):
  endif; 
 ?>
 <?php
-if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
+if(isset($_GET['action']) && $_GET['action'] == 'modifier'&& isset($_GET['id'])){
   ?>
 <h3 class="text-center text-warning">Form de modif experience</h3>
 <?php

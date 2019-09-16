@@ -66,13 +66,16 @@ $donnees=$bdd->query("SELECT * FROM experiences ORDER BY id_xp DESC");
 
   
   <!--<img src="photo/landscape.jpg" bg-color="rgba"alt="">-->
-<div class="row">
-<a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8">Accueil</i></a>
-</div>
-<div class="row">
+  <div class="row">
+    <a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8">Accueil</i></a>
+  </div>
+  <div class="container">
+  <div class="row">
     <?php echo $contenu;?>
+  </div>
+  </div>
+  </div><!-- FIN .row-->
 </div>
-</div><!-- FIN .row-->
-</div>
-  </body>
-  </html>
+  <?php
+require_once "inc/footer.inc.php"
+?>

@@ -8,9 +8,10 @@ extract($_GET);
 // echo'</pre>';
 //------variables d'affichage des  errreurs----------------
 $successFormation='';
-$msgTitre='';
-// $formatio/n_update='';
-// $msgNiveau='';
+$msgIntitule='';
+$formation_update='';
+$msgNiveau='';
+$msgAnnee='';
 //-------modification--------
 
 
@@ -22,13 +23,13 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier' && ($_GET['id'])){
     $req->execute();
     // Si je trouve un résultat alors ee récupère les infos en BDD pour les afficher dans le formulaire de modification
     if($req->rowCount()> 0){
-        $formation_update = $req->fetch(PDO::FETCH_ASSOC);
+        $formation_update =$req->fetch(PDO::FETCH_ASSOC);
     }
 }// FIN if(isset($_GET['action']) && $_GET['action'] == 'update' && ($_GET['id']))
 
 $select_date = '';
 $year = date('Y');
-$century = $year - 10;
+$century = $year - 30;
 
 while($year >= $century){
     if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation']) && $_GET['id_formation'] ==  $formation_update['id_formation'] && $formation_update['form_annee'] == $year){
@@ -43,37 +44,37 @@ while($year >= $century){
 }
 
 // Je contrôle et j'insert en BDD
-// $select_date = '';
-// $year = date('Y');
-// $century = $year - 10;
 
-// while($year >= $century){
-//     if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation']) && $_GET['id_formation'] ==  $formation_update['id_formation'] && $formation_update['form_annee'] == $year){
-//         $select_date .= '<option selected>' . $year . '</option>';
-//     }
-//     elseif ($_POST && isset($_POST['form_annee']) && $_POST['form_annee'] == $year ) {
-//         $select_date .= '<option selected>' . $year . '</option>';
-//     } else {
-//         $select_date .= '<option>' . $year . '</option>';
-//     }
-//     $year--;
-// }
+
+if($_POST){    
   
+ if(empty($niveau) || iconv_strlen($niveau) <2 ||iconv_strlen($niveau) > 10){
+   $msgNiveau.='<span class ="alert-warning text-danger">**niveau à la sortie de formation</span>';
+ }
+ 
+if(empty($annee) || !is_numeric($annee) || strlen($annee) < 4 || strlen($annee) > 4){
+ $msgAnnee.='<span class="alert-warning text-danger">**entrez la date de fin de formation</span>';
+}
+
+if(empty($Intitule) || iconv_strlen($Intitule)<2 || iconv_strlen($Intitule)>50){
+   $msgIntitule.='<span class= "alert-warning text-danger">**nom de l\'entreprise</span>';
+}
+}
   // SI je n'ai aucun message d'erreur, je procède à l'insertion des données dans ma BDD
   if($_POST){
 
-  if(empty($msgTitre) && empty($msgNiveau) && empty($msgAnnee)){
+  if(empty($msgIntitule) && empty($msgNiveau) && empty($msgAnnee)){
 
-    $req=$bdd->prepare(" REPLACE INTO formations VALUES (:id_formation,:form_annee,:form_intitule,:form_niveau)", array(
+    $req=$bdd->prepare(" REPLACE INTO formations VALUES (:id_formation,       :form_annee,:form_intitule,:form_niveau)", array(
       ':id_formation' => $_POST['id_formation'],
       ':form_annee' => $_POST['form_annee'],                
       ':form_intitule' => $_POST['form_intitule'],
-      ':form_niveau' => $_POST['form_niveau']
+      ':form_niveau' => $_POST['form_niveau'],
     ));
-    $req->bindValue(':id_formation', $_POST['id_formation'],PDO::PARAM_STR);        
-    $req->bindValue(':form_annee',$_POST['form_annee'],PDO::PARAM_INT);        
+    $req->bindValue(':id_formation', $_POST['id_formation'],PDO::PARAM_INT);   
+    $req->bindValue(':form_annee',$_POST['form_annee'],PDO::PARAM_STR);        
     $req->bindValue(':form_intitule', $_POST['form_intitule'],PDO::PARAM_STR);
-    $req->bindValue(':form_niveau',$_POST['form_niveau'],PDO::PARAM_INT);
+    $req->bindValue(':form_niveau',$_POST['form_niveau'],PDO::PARAM_STR);
     $req->execute() ;   
     
     $successFormation = '<div class="alert alert-success">L\'enregistrement a bien été réalisé en BDD.</div>';                           
@@ -99,26 +100,52 @@ while($year >= $century){
     <!--cdn fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
-<form method="post" class="container">
-<input type="hidden" class="form-control"  name="id_formation">
+<body>
+<!-- J'adapte le titre du formulaire selon l'action (ajout ou modification) -->
+<?php
+if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
+?>
+<h3 class="text-center text-warning">Formulaire de modification</h3>
+<?php
+}else{
+  ?>
+  <h3 class="text-center text-primary">Ajoutez une nouvelle formation !</h3>
+  <?php
+}
+?>
+<!-- ergonomie retour vres la page de gestion  -->
+<div class="row">
+  <div class="col-12">
+<a href="gestionFormation.php"><i class="fas fa-arrow-circle-left fa-2x text-white offset-8"></i></a>
+  </div>
+</div>
+<!-- FORMULAIRE -->
+
+<form method="post" class="container" action="">
+<?= $successFormation; ?>
+<input type="hidden" class="form-control"  name="id_formation" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['id_formation']; } else { echo ""; }?>">
+
   <div class="form-group">
-  <?php echo $msgTitre.=""?>
+  <?php echo $msgIntitule.=""?>
     <label for="exampleInputEmail1">intitule</label>
-    <input type="text" class="form-control"  name="form_intitule"   placeholder="intitule" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation'])){ echo $formation_update['form_intitule']; } else { echo ""; }?>">
-    
+    <input type="text" class="form-control"  name="form_intitule"   placeholder="intitule" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['form_intitule']; } else { echo ""; }?>">    
   </div>
   
   <div class="form-group">
   <?php echo $msgNiveau.=""?>
     <label for="exampleInputEmail1">niveau</label>
-    <input type="text" class="form-control"  name="form_niveau" aria-describedby="emailHelp" placeholder="niveau" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation'])){ echo $formation_update['form_niveau']; } else { echo ""; }?>">
-    
+    <input type="text" class="form-control"  name="form_niveau" aria-describedby="emailHelp" placeholder="niveau" value="<?php  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['form_niveau']; } else { echo ""; }?>">    
   </div>
+
   <div class="form-group">
   <?php echo $msgAnnee.=""?>
     <label for="exampleInputPassword1">annee</label>
-    <select name="form_annee" id="" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation'])){ echo $formation_update['form_annee']; } else { echo ""; }?>"><?php echo $select_date; ?></select>
-  </div><button type="submit" class="btn btn-primary">enregistrer</button>
+    <select name="form_annee">
+    <option  value="<?php  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['form_annee']; } else { echo ""; }?>"></option>
+    <?=  $select_date;?>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">enregistrer</button>
 </form>
 </div>
 </body>

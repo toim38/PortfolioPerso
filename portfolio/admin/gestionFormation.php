@@ -1,7 +1,11 @@
 <?php
 require_once "../inc/init.inc.php";
-
-$contenu ="";// cette variable me permet d'afficher le résultat de ma boucle dans le HTML
+extract($_GET);
+extract($_POST);
+$formation="";
+$contenu ="";
+$validation="";
+// cette variable me permet d'afficher le résultat de ma boucle dans le HTML
 
 //  3 - Je me connecte à la table projets
 $resultat = $bdd->query("SELECT * FROM formations");
@@ -10,20 +14,48 @@ $resultat = $bdd->query("SELECT * FROM formations");
 while($formation = $resultat->fetch(PDO::FETCH_ASSOC)){
     //j'affiche le résultat :
       $contenu .='<tr>';
-      $contenu .='<th scope="row">'.$formation['id_formation'].'</th>';
+      // $contenu .='<th scope="row">'.$formation['id_formation'].'</th>';
       $contenu .='<td>'.$formation['form_intitule'].'</td>';
       $contenu .='<td>'.$formation['form_annee'].'</td>';
       $contenu .='<td>'.$formation['form_niveau'].'</td>';
       $contenu .='<td><a href="form_formation.php?action=modifier&id='.$formation['id_formation'].'"><i class="far fa-edit text-warning"></i></a></td>';
       $contenu .='<td><a href="?action=supprimer&id='.$formation['id_formation'].'"><i class="fas fa-trash text-danger"></i></a></td>';
 }
+// -traitement pr la suppression-----------
+
+if(isset($_GET['action'])&& $_GET['action'] =='supp' && isset($_GET['id']))
+{    
+    $supprimer=$bdd->prepare("DELETE  FROM formations WHERE id_formation = :id_formation");
+    // $supp_prod = $bdd->prepare("DELETE FROM formations WHERE id_formation = :id_produit");
+    $supprimer->bindValue(':id_formation', $id, PDO::PARAM_STR); // $id_formation fait reference à $_GET['id_formation'] (extract)
+    $supprimer->execute();
+ //$supprimer=$bdd->query("DELETE * FROM experiences WHERE id_xp = :id_xp"); //array(
+         //':id_xp'=> $_GET['id']); 
+    $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la formation à bien été supprimé </div>";                   
+  }  
+  
+
+
+
+    // <!-- ---traitement de modification------ -->
+
+
+if(isset($_GET['action']) && $_GET['action'] == 'modifier'): 
+ $modifier=$bdd->prepare("UPDATE * FROM formations WHERE id_formation = :id_formation");
+    // $modifier = $bdd->prepare("UPDATE FROM formations WHERE id_formation = :id_formation");
+    $modifier->bindValue(':id', $id, PDO::PARAM_STR); // $id_formation fait reference à $_GET['id_formation'] (extract)    $modifier->execute();
+ //$supprimer=$bdd->query("DELETE * FROM formations WHERE id_formation = :id_formation"); //array(
+         //':id_formation'=> $_GET['id']); 
+    $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>l'experience professionnelle  à bien été modifié </div>";                                          
+ endif;   
 ?>
 <?php
-if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
-?>
+if(isset($_GET['action']) && $_GET['action'] == 'modifier'&& isset($_GET['id'])){
+  ?>
 <h3 class="text-center text-warning">Form de modif formation</h3>
 <?php
-}else {
+}
+else {
 ?>
   <h3 class="text-center text-primary">Ajoutez une formation</h3>
 
@@ -46,6 +78,11 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 <body>
+<div class="row">
+  <div class="col-12">
+<a href="accueilAdmin.php"><i class="fas fa-arrow-circle-left fa-2x text-white offset-8"></i></a>
+  </div>
+</div>
 <h1 class="text-center text-primary m-5">Gestion de formation</h1>
 <div class="container">
 <ul class="nav nav-tabs">
@@ -58,9 +95,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
   <li class="nav-item">
     <a class="nav-link" href="../curriculum vitae.php">cv</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
 </ul>
 
 <table class="table table-dark">
@@ -69,7 +103,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
       <th scope="col">Intitulé</th>
       <th scope="col">Année</th>
       <th scope="col">Niveau acquis</th>
-      <th scope="col">Contenu</th>
       <th colspan="2">Action</th>
     </tr>
   </thead>

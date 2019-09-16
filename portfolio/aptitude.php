@@ -1,76 +1,88 @@
 <?php
 require_once "inc/init.inc.php";
 require_once "inc/header.inc.php";
+// declaration des variables
+$langage="";
+$niveau="";
+$validation="";
+$contenu ="";
+$req="";
+$projet="";
+// connexion bdd
+$donnees=$bdd->query("SELECT * FROM langages ");
+ //---je recupére les infos de ma table langage en faisant une boucle
+ while($langage=$donnees->fetch(PDO::FETCH_ASSOC)){
+        $contenu.='<div class=" col-md-4 card mt-5 m-3" style="width: 18rem;">';
+        $contenu.='<div class="card-body zindex">';
+        $contenu.='<h5 class="card-title">'.$langage['langage'].'</h5>';        
+        $contenu.='<p class="card-text">'.$langage['langLevel'].'</p>';
+        // $contenu.='<p class="card-text">'.$langage['n°'].'</p>';
+        $contenu.='</div>';        
+        $contenu.='<div class="card-body">';
+        $contenu.='</div>';
+        $contenu.='</div>';
+      
+  }
+$donnees=$bdd->query("SELECT * FROM projets ");
+
+ if($donnees->rowCount() == 0){
+        $msg = '<h3 class="text-center"><i class="fas fa-cogs"></i>en cours de realisation</h3>';
+    }
+ //---je recupére les infos de ma table langage en faisant une boucle
+ while($projet=$donnees->fetch(PDO::FETCH_ASSOC)){
+        $req.='<div class=" col-md-4 card mt-5 m-3" style="width: 18rem;">';
+        $req.='<div class="card-body zindex">';
+        $req.='<h5 class="card-title">'.$projet['titre_projet'].'</h5>';        
+        $req.='<p class="card-text">'.$projet['liens'].'</p>';
+        $req.='<p class="card-text">'.$projet['contenu'].'</p>';        
+        // $contenu.='<p class="card-text">'.$langage['n°'].'</p>';
+        $req.='</div>';        
+        $req.='<div class="card-body">';
+        $req.='</div>';
+        $req.='</div>';
+      
+  }
+
+
+
 ?>
-<main class="container">
-<div class="row">
-<a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8"> Accueil</i></a>
-</div>
-<div class="alert alert-primary" role="alert">
-    <h2>RAPPORT language code</h2>
-</div class="row">
- <section class="langage">
-       HTML
-<div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-CSS
-<div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-PHP
-<div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-JAVASCRIPT
-<div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-SYMFONY
-<div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-AJAX
-<div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 2%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CDN BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--cdn fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Aptitudes</title>
+</head>
 
-<section class="row">
-<div class="card offset-1 col-md-4">
-  <img src="photo/travail-chantier.jpg" class="card-img-top" alt="...">
-   <div class="card-body">
-    <h5 class="card-title ">RAPPORT AVEC LE MATERIEL</h5>
-  </div>
-  <div class="card-body">
-    <p class="card-text">Le terrain serait donc d’abord une matière, formée à la suite de processus constitutifs longs, complexes et toujours inachevés,</p> 
-    <p>que l’on doit observer pour la comprendre et que l’on doit travailler pour la rendre intelligible, </p>
-    <p>[1]Sur la question du lien entre pratique du terrain et écriture,…</p>
-    <p>vecteur de la transmission de notre expérience, de nos analyses, de notre recherche.</p>
-    <p>Mais le terrain c’est souvent bien plus que cela. C’est aussi un territoire [2]</p>
+
+<div class="container">
+  <h3 class="text-center m-5">TECHNOLOGIE :</h3>
+  <div class="row">
+
+ 
+
+    <?php echo $contenu;?>
     
-    
+
+  </div>
+  <h3 class="text-center">PROJETS :</h3>
+  <div class="row">
+<?php 
+
+
+  echo $req;
+  echo $msg;
+
+?>
+
   </div>
 </div>
-<div class="card offset-2 col-md-4">
-  <img src="photo/clint-bustrillos.jpg" class="card-img-top" alt="...">
-   <div class="card-body">
-    <h5 class="card-title">RAPPORT HUMAIN</h5>
-  </div>
-  <div class="card-body">
-    <p class="card-text">Il est considéré que les relations humaines sont essentielles au développement individuel et intellectuel de chaque être humain,</p>
-<p>  puisque c’est grâce à ces liens que les sociétés sont constituées, aussi bien les plus petites (par exemple, </p>
-<p> dans les petits villages ou les campagnes) que les plus grandes (en ville).</p>
-<p> Les relations humaines impliquent, nécessairement, au moins deux individus.</p></p>
-  </div>
-</div>
-
-</section>
-
-</main>
-
-<div class="row">
-  <?php
-  ?>
-</div>
-  
+<?php
+require_once "inc/footer.inc.php"
+?>
