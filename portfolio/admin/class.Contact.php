@@ -1,5 +1,5 @@
 <?php
-Class contact{
+Class Contact{
 
     
     

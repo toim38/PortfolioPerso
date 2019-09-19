@@ -19,8 +19,8 @@ require_once "init.inc.php"
 <body >
 <header class="container-fluid">
   <div class="alert bg-rgba" role="alert"> 
-    <h1 class="text-center">PORTFOLIO <br><em>ZAROUEL <a href="admin/connexion.php" id="admin">Touhami</a></em></h1>
-    <h3 class="text-center">DEVELOPPEUR INTEGRATEUR WEB junior</h3>
+    <h1 class="text-center font-weight-bold text-uppercase"><span class=" rounded-pill ">PORTFOLIO</span>  <br><em>ZAROUEL Touhami<a href="admin/connexion.php"><span>.</span></a></em></h1>
+    <h6 class="text-center">DEVELOPPEUR INTEGRATEUR WEB junior</h6>
   </div>
     <nav class="navbar  navbar-expand-lg navbar-primary bg-rgba ">
      

@@ -1,5 +1,11 @@
 <?php
 require_once "../inc/init.inc.php";
+if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
+ {
+    session_destroy();
+    header('Location:../index.php');
+    echo "<pre>";var_dump($admin);echo "</pre>";
+}
 extract($_GET);
 extract($_POST);
 $formation="";
@@ -112,7 +118,8 @@ else {
     </tr>
   </tbody>
 </table>
-
+<button class="btn btn-lg btn-outline-danger rounded offset-10 mt-5" type="button text"><a href="?action=deconnexion" role="button">Deconnexion</a></button>   
+    </div>
 </div>
 </body>
 </html>

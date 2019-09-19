@@ -20,11 +20,9 @@ $donnees=$bdd->query("SELECT * FROM langages ");
         $contenu.='</div>';        
         $contenu.='<div class="card-body">';
         $contenu.='</div>';
-        $contenu.='</div>';
-      
+        $contenu.='</div>';      
   }
 $donnees=$bdd->query("SELECT * FROM projets ");
-
  if($donnees->rowCount() == 0){
         $msg = '<h3 class="text-center"><i class="fas fa-cogs"></i>en cours de realisation</h3>';
     }
@@ -39,12 +37,8 @@ $donnees=$bdd->query("SELECT * FROM projets ");
         $req.='</div>';        
         $req.='<div class="card-body">';
         $req.='</div>';
-        $req.='</div>';
-      
+        $req.='</div>';      
   }
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,25 +54,18 @@ $donnees=$bdd->query("SELECT * FROM projets ");
     <title>Aptitudes</title>
 </head>
 
-
 <div class="container">
   <h3 class="text-center m-5">TECHNOLOGIE :</h3>
   <div class="row">
-
- 
-
-    <?php echo $contenu;?>
-    
+    <?php echo $contenu;?>  
 
   </div>
   <h3 class="text-center">PROJETS :</h3>
   <div class="row">
+
 <?php 
-
-
   echo $req;
   echo $msg;
-
 ?>
 
   </div>

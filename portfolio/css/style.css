@@ -73,12 +73,12 @@ color:black;
     background: khaki;
 }
 
-/* BOUTON CONNEXION ADMIN */
+/* BOUTON CONNEXION ADMIN 
 #admin{
  text-decoration:none;
   color: black;
   cursor: auto;
-}    
+}  */  
 .col-md-12{
     height: 1200px;
     width: 1300px;   
@@ -101,3 +101,43 @@ position: relative;
 footer{
     color:greenyellow;
 }
+
+/* Habiollage Portfolio */
+
+
+ /*span{
+
+    background: rgba(255,193,7,1);
+
+    background: -moz-linear-gradient(45deg, rgb(7, 197, 255) 0%, rgb(34, 49, 255) 100%);
+
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgb(7, 65, 255)), color-stop(100%, rgba(255,87,34,1)));
+
+    background: -webkit-linear-gradient(45deg, rgb(7, 255, 201) 0%, rgb(34, 203, 255) 100%);
+
+    background: -o-linear-gradient(45deg, rgb(7, 226, 255) 0%, rgb(34, 211, 255) 100%);
+
+    background: -ms-linear-gradient(45deg, rgb(7, 176, 255) 0%, rgb(56, 34, 255) 100%);
+
+    background: linear-gradient(45deg, rgb(7, 255, 243) 0%, rgb(34, 100, 255) 100%);
+
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+
+  }*/
+/* Pour cacher le point de connexion admin */
+
+#admin > span:nth-child(1)
+{
+
+background: #030444;
+
+color: #030444 !important;
+
+cursor: default;
+
+text-decoration: none;
+
+}
+
+
+

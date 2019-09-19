@@ -41,6 +41,7 @@ if($_POST){
   if(empty($msglangage) && empty($msgnewLang)&& empty($msglang_level))
   {
    $req=$bdd->prepare("REPLACE INTO langages VALUES (:id_lang, :langage, :langLevel)", array                   (':id_lang' => $_POST['id_lang'],
+        ':id_lang'=> $_POST['id_lang'],               
         ':langage'=> $_POST['langage'],               
         ':langLevel' => $_POST['langLevel'], ));
 

@@ -1,8 +1,9 @@
 <?php
 require_once "inc/init.inc.php";
-require_once "admin/Contact.php";
-
-
+ require_once "admin/class.Contact.php";
+  
+extract($_POST);
+extract($_GET);
 
 // variable d'affichage de message erreur;
 $preError="";
@@ -11,17 +12,17 @@ $mailError="";
 // variable d'affichage de message succes;
 $msgSuccess="";
 
-extract($_POST);
+
 // echo '<pre>';echo var_dump($_POST);echo '</pre>'; 
 
 //verification des champs du formulaire
 if($_POST)
   {
-    if(empty($contact_prenom) || iconv_strlen($contact_prenom)>3 || iconv_strlen($contact_prenom)>50)    
+    if(empty($contact_prenom) || iconv_strlen($contact_prenom)<3 || iconv_strlen($contact_prenom)>50)    
         { 
           $preError.='<small class="text-danger">saisi un prenom entre 3 et 20 caracteres</small>'; 
          } 
-    if(empty($contact_nom) || iconv_strlen($contact_nom)>3 || iconv_strlen($contact_nom)>50)      
+    if(empty($contact_nom) || iconv_strlen($contact_nom)<3 || iconv_strlen($contact_nom)>50)      
        { 
          $nomError.='<small class="text-danger">saisi un nom entre 3 et 20 caracteres</small>'; 
         }

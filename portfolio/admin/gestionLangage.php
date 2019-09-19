@@ -2,7 +2,12 @@
 require_once "../inc/init.inc.php";
 extract($_POST);
 extract($_GET);
-
+if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
+ {
+    session_destroy();
+    header('Location:../index.php');
+    echo "<pre>";var_dump($admin);echo "</pre>";
+}
 $contenu ="";// cette variable me permet d'afficher le résultat de ma boucle dans le HTML
 $langage ="";
 $validation="";
@@ -85,17 +90,7 @@ else {
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../admin/form_langage.php">formulaire d'ajout</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../curriculum vitae.php">cv</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-  
+  </li>  
 </ul>
 <table class="table table-striped table-dark" methode="post" >
   <thead class="listeLangages">
@@ -111,6 +106,8 @@ else {
     <?= $contenu;?>
   </tbody>
 </table>
+<button class="btn btn-lg btn-outline-danger rounded offset-10 mt-5" type="button text"><a href="?action=deconnexion" role="button">Deconnexion</a></button>   
+    </div>
 </div>
 
  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

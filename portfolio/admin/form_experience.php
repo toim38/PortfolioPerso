@@ -11,7 +11,7 @@ $msgPoste='';
 $msgDescription='';
 $msgEntreprise='';
 $successmsg ='';
-
+$xp_modif='';
 
 // echo '<pre style="background:red;color:white;">';
 // print_r($_POST);
@@ -35,7 +35,7 @@ $select_date = '';
 $year = date('Y');
 $century = $year - 50;
 while($year >= $century){
-    if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id']) && $_GET['id'] == $xp_modif['id_xp'] &&
+    if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp']) && $_GET['id_xp'] == $xp_modif['id_xp'] &&
         $xp_modif['annee-1'] == $year){
         $select_date .= '<option selected>' . $year . '</option>';
     }
@@ -51,7 +51,7 @@ $select_date2 = '';
 $year2 = date('Y');
 $century2 = $year2 - 50;
 while($year2 >= $century2){
-    if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id']) && $_GET['id'] == $xp_modif['id_xp'] &&
+    if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp']) && $_GET['id_xp'] == $xp_modif['id_xp'] &&
         $xp_modif['annee-2'] == $year2){
         $select_date2 .= '<option selected>' . $year2 . '</option>';
     }
@@ -146,14 +146,14 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
   <form method='post' >
   <?= $successmsg;?>
     <div class="form-group">
-      <input type="hidden"  name="id_xp" class="form-control" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $xp_modif['id_xp']; } else { echo ""; }?>">
+      <input type="hidden"  name="id_xp" class="form-control" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp'])){ echo $xp_modif['id_xp']; } else { echo ""; }?>">
     </div>
 
      <div class="row">
     <div class="col">
     <label>Début</label>
       <select name="annee1">
-        <option value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo  $xp_modif['annee-1']; } else { echo ""; }?>"><?= $msgAnnee1;?></option>
+        <option value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp'])){ echo  $xp_modif['annee-1']; } else { echo ""; }?>"><?= $msgAnnee1;?></option>
         <?=  $select_date;?>
      
       </select>
@@ -161,7 +161,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
     <div class="col">
       <label>Fin</label>
       <select name="annee2">
-        <option value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo  $xp_modif['annee-2']; } else { echo ""; }?>"><?= $msgAnnee2;?></option>
+        <option value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp'])){ echo  $xp_modif['annee-2']; } else { echo ""; }?>"><?= $msgAnnee2;?></option>
          <?=  $select_date2;?>
       </select>
     </div>
@@ -170,21 +170,21 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
     <div class="form-group">
       <label for="poste">poste</label>
       <?=$msgPoste ?>
-      <input type="text" class="form-control"  name="poste" placeholder="poste" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo  $xp_modif['poste']; } else { echo ""; }?>">
+      <input type="text" class="form-control"  name="poste" placeholder="poste" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp'])){ echo  $xp_modif['poste']; } else { echo ""; }?>">
     </div>
 
     <div class="form-group">
       <label for="description">description</label>
       <?=$msgDescription?>
       <textarea name="description" class="form-control" id="description" placeholder="example textarea">
-      <?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo  $xp_modif['description']; } else { echo ""; }?>
+      <?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp'])){ echo  $xp_modif['description']; } else { echo ""; }?>
       </textarea>
     </div>
   
     <div class="form-group">
       <label for="entreprise" >entreprise</label>
       <?=$msgEntreprise?>
-      <input type="text" class="form-control" name="entreprise" id="entreprise" placeholder="appellation" value="<?php if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo  $xp_modif['entreprises']; } else { echo ""; }?>">
+      <input type="text" class="form-control" name="entreprise" id="entreprise" placeholder="appellation" value="<?php if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_xp'])){ echo  $xp_modif['entreprises']; } else { echo ""; }?>">
     </div>
     <input type="submit" value="Envoyer">
   </form>

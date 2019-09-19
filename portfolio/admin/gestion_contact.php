@@ -2,33 +2,40 @@
 // II - je m'occupe du traitement PHP
 // 1 - CONNEXION BDD
 require_once "../inc/init.inc.php";
-
+if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
+ {
+    session_destroy();
+    header('Location:../index.php');
+    echo "<pre>";var_dump($admin);echo "</pre>";
+}
 extract($_POST);
 extract($_GET);
-
+$id_contact='';
 $validate = '';
 $contenu ='';
 // cette variable me permet d'afficher le résultat de ma boucle dans le HTML
 //------SUPPRESSION PROJET------------
-if(isset($action) && $action =='supprimer' && isset($id)){
+if(isset($action) && $action =='supprimer' && isset($id_contact)){
 
   $delete = $bdd->prepare("DELETE FROM contact WHERE id_contact = :id_contact");
-  $delete->bindValue(':id_contact',$id,PDO::PARAM_INT);
+  $delete->bindParam(':id_contact',$id,PDO::PARAM_INT);
   $delete->execute();
 }
 
 
 // fin requete suppression
 
-//  3/ - Je me connecte à la table projets
+//  3/ - Je me connecte à la table contact
 $resultat = $bdd->query("SELECT * FROM contact");
 
-// 4/ -JE récupère les infos de contenu dans ma table projet avec une boucle while
+// 4/ -JE récupère les infos de contenu dans ma table contact avec une boucle while
 while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
 {
     //j'affiche le résultat :
-    $contenu .='<tr>';
-      // $contenu .='<th scope="row">'.$projet['id_projet'].'</th>';
+    $contenu .='<tr>';      
+    // $contenu .='<th scope="row">'.$projet['id_projet'].'</th>';
+
+      $contenu .='<td>'.$contact['id_contact'].'</td>';
       $contenu .='<td>'.$contact['contact_nom'].'</td>';
       $contenu .='<td>'.$contact['contact_prenom'].'</td>';
       $contenu .='<td>'.$contact['contact_email'].'</td>';
@@ -40,8 +47,8 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
 //------modification PRODUIT------------
    
    
-/*("UPDATE  projets SET titre_projet = :titre_projet , liens = :liens ,contenu = :contenu WHERE id_projet = $id_projet");    
-//id_projet fait reference à $_GET['id_projet'](extract)    
+$modifier=$bdd->prepare("UPDATE * FROM contact WHERE  id_contact = $id_contact, contact_nom = :contact_nom ,contact_prenom = :contact_prenom,contact_email = :contact_email,message=:message ");    
+//id_contact fait reference à $_GET['id_contact'](extract)    
 // fin requete MODIFICATION*/
 // 2/ -variable d'affichage :
 
@@ -89,7 +96,9 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
   <thead>
     <tr>
       <!-- <th scope="col">n° du projet</th> -->
-      <th colspan="2">Contact</th>
+      <th colspan="col">projet</th>
+      <th scope="col">nom</th>
+      <th scope="col">prenom</th>
       <th scope="col">email</th>
       <th scope="col">message</th>
       <th scope="col">Action</th>
@@ -102,7 +111,8 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
 </table>
 </div>
 
-
+<button class="btn btn-lg btn-outline-danger rounded offset-10 mt-5" type="button text"><a href="?action=deconnexion" role="button">Deconnexion</a></button>   
+    </div>
 
 
 </body>

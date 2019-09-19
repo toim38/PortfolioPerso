@@ -13,7 +13,7 @@ $xp='';
 $donnees=$bdd->query("SELECT * FROM experiences ORDER BY id_xp DESC");
  //---je recupére les infos de ma table experience en faisant une boucle
  while($xp=$donnees->fetch(PDO::FETCH_ASSOC)){
-        $contenu.='<div class=" col-md-4 card m-3" style="width: 18rem;">';
+        $contenu.='<div class=" col-md-4  card m-3 " style="width: 18rem;">';
         $contenu.='<div class="card-body zindex">';
         $contenu.='<h5 class="card-title">'.$xp['poste'].'</h5>';
         $contenu.='<p class="card-text">'.$xp['description'].'</p>';
@@ -62,7 +62,7 @@ $donnees=$bdd->query("SELECT * FROM experiences ORDER BY id_xp DESC");
 
 </div> -->
 
-<div class="col-md-12" >
+<div class="col-md-12 " >
 
   
   <!--<img src="photo/landscape.jpg" bg-color="rgba"alt="">-->

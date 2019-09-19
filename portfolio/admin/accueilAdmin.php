@@ -1,6 +1,11 @@
 <?php
 require_once "../inc/init.inc.php";
-
+if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
+ {
+    session_destroy();
+    header('Location:../index.php');
+    echo "<pre>";var_dump($admin);echo "</pre>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,6 +45,11 @@ require_once "../inc/init.inc.php";
   </ul>
 </div>
 </section>
+<article>
+<a href="../index.php">retour accueil general</a>
+</article>
+<button class="btn btn-lg btn-outline-danger rounded offset-10 mt-5" type="button text"><a href="?action=deconnexion" role="button">Deconnexion</a></button>   
+    </div>
 </div>
 </body>
 </html>

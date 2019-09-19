@@ -1,6 +1,14 @@
 <?php
 
-  require_once "../inc/init.inc.php";
+require_once "../inc/init.inc.php";
+
+if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
+ {
+    session_destroy();
+    header('Location:../index.php');
+    echo "<pre>";var_dump($admin);echo "</pre>";
+}
+  
 //je créer des variables avec les names 
 extract($_POST);
 echo '<pre>';
@@ -34,6 +42,10 @@ verification des champs de mon formulaire.
 //fin if($_POST)
 ?>
 
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,10 +58,16 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <title>Touhami : connexion admin</title>
 </head>
 <body>
+  <div class="container-fluid">
+
+	<!--Bouton de deconnexion-->
+
+<button class="btn btn-lg btn-outline-danger rounded offset-10 mt-5" type="button text"><a href="?action=deconnexion" role="button">Deconnexion</a></button>   
+    </div>
+<div class="container m-5 mx-auto">
 <div class="alert alert-dark" role="alert">
     <h1 class="text-center">CONNEXION ADMIN</h1>
 </div>
-<div class="container m-5 mx-auto">
 <form method="post" action="">
   <div class="form-group">
     <label for="exampleInputEmail1"></label>
@@ -64,7 +82,9 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
   <button type="submit" class="btn btn-primary m-3">ENREGISTRER</button>
 </form>
 </div>
-
+<article>
+<a href="../index.php">retour accueil general</a>
+</article>
 
 
 
