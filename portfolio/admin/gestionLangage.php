@@ -14,7 +14,7 @@ $validation="";
 //  3 - Je me connecte à la table projets
 $resultat = $bdd->query("SELECT * FROM langages");
 
-// 4 -JE récupère les infos de contenu dans ma table projet avec une boucle while
+// 4 -JE récupère les infos de contenu dans ma table langage avec une boucle while
 while($langage = $resultat->fetch(PDO::FETCH_ASSOC))
 {
     //j'affiche le résultat :

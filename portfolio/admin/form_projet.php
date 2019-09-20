@@ -26,25 +26,24 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier' && ($_GET['id'])){
 if($_POST){
   if(empty($titre_projet) || iconv_strlen($titre_projet) < 2 || iconv_strlen($titre_projet) > 100){
     $msgTitre.='<span class=" alert-warning text-danger"> ** Saisissez un titre valide (100 caractère max)</span>';
-  }  
+  } 
+  if(empty($liens) || !filter_var($liens, FILTER_VALIDATE_URL)){
+    $msgliens.='<span class="alert-warning text-danger"> ** Saisissez une url valide</span>';
+  } 
+  
   if(empty($contenu) || iconv_strlen($contenu) > 400){
     $msgContenu.='<span class="alert-warning text-danger"> ** La description de doit pas dépasser 400 caractères</span>';
   }  
-  if(empty($liens) || !filter_var($liens, FILTER_VALIDATE_URL)){
-    $msgliens.='<span class="alert-warning text-danger"> ** Saisissez une url valide</span>';
-  }  
-
+  
 //------------j'insert en bdd-------
-if(empty($msgtitre)&& empty($msgContenu)&& empty($msgliens)){
-  //------------on vient d'effectuer une protection contre inject°----
-         
+if(empty($msgTitre)&& empty($msgContenu)&& empty($msgliens)){
+  //------------on vient d'effectuer une protection contre inject°----        
 
         $donnees=$bdd->prepare("REPLACE INTO projets VALUES (:id_projet, :titre_projet, :liens, :contenu)", array(
                 ':id_projet' => $_POST['id_projet'],
                 ':titre_projet' => $_POST['titre_projet'],
                 ':liens' => $_POST['liens'],
-                ':contenu' => $_POST['contenu'],
-                
+                ':contenu' => $_POST['contenu'],                
         ));
         $donnees->bindValue(':id_projet', $_POST['id_projet'],PDO::PARAM_STR);        
         $donnees->bindValue(':titre_projet', $_POST['titre_projet'],PDO::PARAM_STR);

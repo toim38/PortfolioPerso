@@ -64,8 +64,10 @@ $donnees=$bdd->query("SELECT * FROM projets ");
   <div class="row">
 
 <?php 
+<'pre'>;
   echo $req;
-  echo $msg;
+  </'pre'>;
+  // echo $msg;
 ?>
 
   </div>

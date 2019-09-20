@@ -5,19 +5,15 @@ require_once "../inc/init.inc.php";
 
 extract($_POST);
 extract($_GET);
-
 $validate = '';
 $contenu ='';
 // cette variable me permet d'afficher le résultat de ma boucle dans le HTML
 //------SUPPRESSION PROJET------------
 if(isset($action) && $action =='supprimer' && isset($id)){
-
   $delete = $bdd->prepare("DELETE FROM projets WHERE id_projet = :id_projet");
   $delete->bindValue(':id_projet',$id,PDO::PARAM_INT);
   $delete->execute();
 }
-
-
 // fin requete suppression
 
 //  3/ - Je me connecte à la table projets

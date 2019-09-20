@@ -1,23 +1,19 @@
-
-
 <?php
   // II - je m'occupe du traitement PHP
   // 1 - CONNEXION BDD
   require_once "../inc/init.inc.php";
-  if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
-   {
-      session_destroy();
-      header('Location:../index.php');
-      echo "<pre>";var_dump($admin);echo "</pre>";
-  }
   extract($_POST);
   extract($_GET);
   if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
    {
       session_destroy();
       header('Location:../index.php');
-      echo "<pre>";var_dump($admin);echo "</pre>";
+      echo "<pre>";
+      var_dump($admin);
+      echo "</pre>";
   }
+  
+  
   $validate = '';
   $contenu ='';
   $projet='';
@@ -29,27 +25,6 @@
   // cette variable me permet d'afficher le résultat de ma boucle dans le HTML
   //  3/ - Je me connecte à la table projets
     $resultat = $bdd->query("SELECT * FROM projets");
-  // $resultat = $bdd->query("INSERT INTO projets (id,titre,liens,contenu) VALUES (:id, :titre, :liens, :contenu)");
-  
-  $resultat = $bdd->prepare ("INSERT INTO projets (id_projet,titre_projet, liens, contenu) VALUES (:id_projet, :titre_projet,  :liens, :contenu)");
-  $resultat-> bindValue(':id_projet', $id_projet, PDO::PARAM_INT );
-  $resultat -> bindValue(':liens', $liens , PDO::PARAM_STR );
-  $resultat -> bindValue(':titre_projet' , $titre_projet  , PDO::PARAM_STR);
-  $resultat -> bindValue(':contenu', $contenu, PDO::PARAM_STR );
-  
-  $resultat -> execute();
-  
-  //------SUPPRESSION PROJET------------
-  if(isset($action) && $action =='supprimer' && isset($id)){
-    $delete = $bdd->prepare("DELETE FROM projets WHERE id_projet = :id_projet");
-    $delete->bindValue(':id_projet',$id,PDO::PARAM_INT);
-    $delete->execute();
-  }
-  // fin requete suppression
-  
-  //  3/ - Je me connecte à la table projets
-  $resultat = $bdd->query("SELECT * FROM projets");
-  
   // 4/ -JE récupère les infos de contenu dans ma table projet avec une boucle while
   while($projets = $resultat->fetch(PDO::FETCH_ASSOC))
   {
@@ -63,18 +38,43 @@
         $contenu .='<td><a href="?action=supprimer&id='.$projets['id_projet'].'"><i class="fas fa-trash text-danger"></i></a></td>';
       $contenu .='</tr>';
   }
+  // $resultat = $bdd->prepare ("REPLACE INTO projets (id_projet , titre_projet ,liens ,contenu) VALUES (:id_projet, :titre_projet, :liens, :contenu)",array(
+  //       ':id_projet' => $_POST["id_projet"],
+  //       ':titre_projet' => $_POST["titre_projet"],                
+  //       ':liens' => $_POST["liens"],
+  //       ':contenu' => $_POST["contenu"],
+  //     ));
+  // $resultat-> bindParam(':id_projet', $id_projet, PDO::PARAM_INT );
+  // $resultat -> bindParam(':titre_projet', $titre_projet , PDO::PARAM_STR );
+  // $resultat -> bindParam(': liens', $liens  , PDO::PARAM_STR);
+  // $resultat -> bindParam(':contenu', $contenu, PDO::PARAM_STR );  
+  // $resultat -> execute();
+  
+  //------SUPPRESSION PROJET------------
+  if(isset($action) && $action =='supp' && isset($id)){
+    $delete = $bdd->prepare("DELETE FROM projets WHERE id_projet = :id_projet");
+    $delete->bindParam(':id_projet',$id,PDO::PARAM_STR);
+    $delete->execute();
+    $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>le projet à bien été supprimé </div>";                              }  
+
+
+  // fin requete suppression
+  
+  
+  
+  
   
   //------modification PRODUIT------------
      
-     if(isset($_GET['action']) && $_GET['action'] =='modifier'):
+  //   //  if(isset($_GET['action']) && $_GET['action'] =='modifier'):
       
-      $modifier=$bdd->prepare("UPDATE * FROM projets WHERE id_projet = :id_projet");
-      // $supp_prod = $bdd->prepare("UPDATE FROM experiences WHERE id_xp = :id_xp");
-      $modifier->bindValue(':id', $id, PDO::PARAM_STR); // $id_xp fait reference à $_GET['id_xp'] (extract)    $modifier->execute();
-   //$supprimer=$bdd->query("DELETE * FROM experiences WHERE id_xp = :id_xp"); //array(
-           //':id_xp'=> $_GET['id']); 
-      $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>l'experience professionnelle  à bien été modifié </div>";                                          
-   endif; 
+  //     $modifier=$bdd->prepare("UPDATE * FROM projets WHERE id_projet = :id_projet");
+  //     // $supp_prod = $bdd->prepare("UPDATE FROM experiences WHERE id_xp = :id_xp");
+  //     $modifier->bindValue(':id', $id, PDO::PARAM_STR); // $id_xp fait reference à $_GET['id_xp'] (extract)    $modifier->execute();
+  //  //$supprimer=$bdd->query("DELETE * FROM experiences WHERE id_xp = :id_xp"); //array(
+  //          //':id_xp'=> $_GET['id']); 
+  //     $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>l'experience professionnelle  à bien été modifié </div>";                                          
+  //  endif; 
   
   ?>
 <!-- I Je m'occupe de mon visuel : -->
