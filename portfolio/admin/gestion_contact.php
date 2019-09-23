@@ -14,20 +14,8 @@ $id_contact='';
 $validate = '';
 $contenu ='';
 // cette variable me permet d'afficher le résultat de ma boucle dans le HTML
-//------SUPPRESSION PROJET------------
-if(isset($action) && $action =='supprimer' && isset($id_contact)){
-
-  $delete = $bdd->prepare("DELETE FROM contact WHERE id_contact = :id_contact");
-  $delete->bindParam(':id_contact',$id,PDO::PARAM_INT);
-  $delete->execute();
-}
-
-
-// fin requete suppression
-
 //  3/ - Je me connecte à la table contact
 $resultat = $bdd->query("SELECT * FROM contact");
-
 // 4/ -JE récupère les infos de contenu dans ma table contact avec une boucle while
 while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
 {
@@ -44,6 +32,18 @@ while($contact = $resultat->fetch(PDO::FETCH_ASSOC))
     $contenu .='</tr>';
 }
 
+//------SUPPRESSION PROJET------------
+if(isset($action) && $action =='supprimer' && isset($id_contact)){
+  $delete = $bdd->prepare("DELETE FROM contact WHERE id_contact = :id_contact");
+  $delete->bindParam(':id_contact',$id,PDO::PARAM_INT);
+  $delete->execute();
+}
+// fin requete suppression
+
+
+
+
+
 //------modification PRODUIT------------
    
    
@@ -53,6 +53,19 @@ $modifier=$bdd->prepare("UPDATE * FROM contact WHERE  id_contact = $id_contact, 
 // 2/ -variable d'affichage :
 
 ?>
+<?php
+  if(isset($_GET['action']) && $_GET['action'] == 'modifier'&& isset($_GET['id'])){
+    ?>
+<h3 class="text-center text-warning">Form de modif contact</h3>
+<?php
+  }
+  else {
+    ?>
+<h3 class="text-center text-primary">voir et si necessaire retirer un contact</h3>
+<?php
+  }
+  ?>
+
 
 <!-- I Je m'occupe de mon visuel : -->
 <!DOCTYPE html>
@@ -105,6 +118,7 @@ $modifier=$bdd->prepare("UPDATE * FROM contact WHERE  id_contact = $id_contact, 
     </tr>
   </thead>
   <tbody>
+  
     
     <?= $contenu;?>
   </tbody>

@@ -14,15 +14,18 @@
   $formation_update='';
   $msgNiveau='';
   $msgAnnee='';
-  //-------modification--------
   
-  // 1 -  Je récupère les infos pour la modification
-  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && ($_GET['id'])){
-      //Je me connect à ma table formation
+  //Je me connect à ma table formation
       $req = $bdd->prepare("SELECT * FROM formations WHERE id_formation = :id_formation");
-      $req->bindValue(':id_formation', $_GET['id']);
+      $req->bindParam(':id_formation', $_GET['id_formation']);
       $req->execute();
-      // Si je trouve un résultat alors ee récupère les infos en BDD pour les afficher dans le formulaire de modification
+
+//-------modification--------
+
+  // 1 -  Je récupère les infos pour la modification
+  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && ($_GET['id_formation'])){
+      
+      // Si je trouve un résultat alors je récupère les infos en BDD pour les afficher dans le formulaire de modification
       if($req->rowCount()> 0){
           $formation_update =$req->fetch(PDO::FETCH_ASSOC);
       }
@@ -97,7 +100,7 @@
     <!--cdn fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   </head>
-  <body>
+  <body id="contact">
     <!-- J'adapte le titre du formulaire selon l'action (ajout ou modification) -->
     <?php
       if(isset($_GET['action']) && $_GET['action'] == 'modifier'){
@@ -111,7 +114,7 @@
       }
       
       ?>
-    <!-- ergonomie retour vres la page de gestion  -->
+    <!-- ergonomie retour vers la page de gestion  -->
     <div class="row">
       <div class="col-12">
         <a href="gestionFormation.php"><i class="fas fa-arrow-circle-left fa-2x text-white offset-8"></i></a>
@@ -120,22 +123,22 @@
     <!-- FORMULAIRE -->
     <form method="post" class="container" action="">
       <?= $successFormation; ?>
-      <input type="hidden" class="form-control" name="id_formation" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['id_formation']; } else { echo " "; }?>">
+      <input type="hidden" class="form-control" name="id_formation" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation'])){ echo $formation_update['id_formation']; } else { echo " "; }?>">
       <div class="form-group">
         <?php echo $msgIntitule.=""?>
         <label for="exampleInputEmail1">intitule</label>
-        <input type="text" class="form-control" name="form_intitule" placeholder="intitule" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['form_intitule']; } else { echo " "; }?>">
+        <input type="text" class="form-control" name="form_intitule" placeholder="intitule" value="<?php  if (isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation'])){ echo $formation_update['form_intitule']; } else { echo " "; }?>">
       </div>
       <div class="form-group">
         <?php echo $msgNiveau.=""?>
         <label for="exampleInputEmail1">niveau</label>
-        <input type="text" class="form-control" name="form_niveau" aria-describedby="emailHelp" placeholder="niveau" value="<?php  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['form_niveau']; } else { echo " "; }?>">
+        <input type="text" class="form-control" name="form_niveau" aria-describedby="emailHelp" placeholder="niveau" value="<?php  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation'])){ echo $formation_update['form_niveau']; } else { echo " "; }?>">
       </div>
       <div class="form-group">
         <?php echo $msgAnnee.=""?>
         <label for="exampleInputPassword1">annee</label>
         <select name="form_annee">
-          <option value="<?php  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id'])){ echo $formation_update['form_annee']; } else { echo " "; }?>"></option>
+          <option value="<?php  if(isset($_GET['action']) && $_GET['action'] == 'modifier' && isset($_GET['id_formation'])){ echo $formation_update['form_annee']; } else { echo " "; }?>"></option>
           <?=  $select_date;?>
         </select>
       </div>

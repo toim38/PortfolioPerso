@@ -20,15 +20,16 @@
   $id_projet='';
   $projets='';
   $liens='';
-  $titre_projet='';
-  
+  $titre_projet='';  
   // cette variable me permet d'afficher le résultat de ma boucle dans le HTML
+
+
   //  3/ - Je me connecte à la table projets
     $resultat = $bdd->query("SELECT * FROM projets");
+
   // 4/ -JE récupère les infos de contenu dans ma table projet avec une boucle while
   while($projets = $resultat->fetch(PDO::FETCH_ASSOC))
-  {
-      //j'affiche le résultat :
+  {      //j'affiche le résultat :
       $contenu .='<tr>';
          $contenu .='<th scope="row">'.$projets['id_projet'].'</th>';
         $contenu .='<td>'.$projets['titre_projet'].'</td>';
@@ -51,14 +52,14 @@
   // $resultat -> execute();
   
   //------SUPPRESSION PROJET------------
-  if(isset($action) && $action =='supp' && isset($id)){
+  if(isset($action) && $action =='supprimer' && isset($id)){
     $delete = $bdd->prepare("DELETE FROM projets WHERE id_projet = :id_projet");
-    $delete->bindParam(':id_projet',$id,PDO::PARAM_STR);
+    $delete->bindValue(':id_projet',$id,PDO::PARAM_STR);
     $delete->execute();
-    $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>le projet à bien été supprimé </div>";                              }  
+    $validation ="<div class='alert alert-success col-md-6 offset-md-3 text-center'>le projet à bien été supprimé </div>";                              }  
+ ?>
 
-
-  // fin requete suppression
+  <!-- /* fin requete suppression
   
   
   
@@ -74,9 +75,9 @@
   //  //$supprimer=$bdd->query("DELETE * FROM experiences WHERE id_xp = :id_xp"); //array(
   //          //':id_xp'=> $_GET['id']); 
   //     $validation .="<div class='alert alert-success col-md-6 offset-md-3 text-center'>l'experience professionnelle  à bien été modifié </div>";                                          
-  //  endif; 
+  //  endif;  -->
   
-  ?>
+ 
 <!-- I Je m'occupe de mon visuel : -->
 <!DOCTYPE html>
 <html lang="fr">
@@ -98,9 +99,9 @@
     </div>
     <h1 class="text-center text-primary m-5">Gestion des projets</h1>
     <ul class="nav nav-tabs">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
-      </li>
+      </li> -->
       <?php
         if(isset($_GET['action']) && $_GET['action'] == 'modifier'&& isset($_GET['id'])){
           ?>
@@ -109,7 +110,7 @@
         }
         else {
           ?>
-      <h3 class="text-center text-primary">Ajoutez un projet</h3>
+      <!-- <h3 class="text-center text-primary">Ajoutez un projet</h3> -->
       <?php
         }
         ?>

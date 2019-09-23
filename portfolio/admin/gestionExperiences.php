@@ -66,7 +66,7 @@
   }
   else {
     ?>
-<h3 class="text-center text-primary">Ajoutez une experience</h3>
+<h3 class="text-center text-primary">Gestion des experiences</h3>
 <?php
   }
   ?>
@@ -88,7 +88,7 @@
         <a class="nav-link active" href="accueilAdmin.php">Retour accueil admin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="form_experience.php" tabindex="-1" aria-disabled="true">Ajouter une expérience</a>
+        <a class="nav-link" href="form_experience.php" tabindex="-1" aria-disabled="true">Ajout d'expériences</a>
       </li>
     </ul>
     <div class="row">

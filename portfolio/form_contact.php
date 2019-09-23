@@ -1,5 +1,3 @@
-
-
 <?php
   require_once "inc/init.inc.php";
    require_once "admin/class.Contact.php";
@@ -49,7 +47,7 @@
          // j'utilise la méthode contactAction() de ma classe 
          $contact->contactAction($contact_prenom, $contact_nom, $contact_email, $message);
   
-        // Je réinitialisationdeschamps
+        // Je réinitialise les champs
          unset($contact_prenom);
          unset($contact_nom);
          unset($contact_email);

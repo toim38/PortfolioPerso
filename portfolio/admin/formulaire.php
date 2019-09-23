@@ -7,11 +7,6 @@ extract($_GET);
 $resultat=$bdd->query("SELECT*FROM contact");
 $admin=$resultat->fetch(PDO::FETCH_ASSOC);
 
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

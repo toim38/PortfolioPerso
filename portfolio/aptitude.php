@@ -7,7 +7,7 @@ $niveau="";
 $validation="";
 $contenu ="";
 $req="";
-$projet="";
+$formation="";
 // connexion bdd
 $donnees=$bdd->query("SELECT * FROM langages ");
  //---je recupére les infos de ma table langage en faisant une boucle
@@ -22,17 +22,17 @@ $donnees=$bdd->query("SELECT * FROM langages ");
         $contenu.='</div>';
         $contenu.='</div>';      
   }
-$donnees=$bdd->query("SELECT * FROM projets ");
+$donnees=$bdd->query("SELECT * FROM formations ");
  if($donnees->rowCount() == 0){
         $msg = '<h3 class="text-center"><i class="fas fa-cogs"></i>en cours de realisation</h3>';
     }
  //---je recupére les infos de ma table langage en faisant une boucle
- while($projet=$donnees->fetch(PDO::FETCH_ASSOC)){
-        $req.='<div class=" col-md-4 card mt-5 m-3" style="width: 18rem;">';
+ while($formation=$donnees->fetch(PDO::FETCH_ASSOC)){
+        $req.='<div class=" col-md-6 card mt-5 m-4" style="width: 18rem;">';
         $req.='<div class="card-body zindex">';
-        $req.='<h5 class="card-title">'.$projet['titre_projet'].'</h5>';        
-        $req.='<p class="card-text">'.$projet['liens'].'</p>';
-        $req.='<p class="card-text">'.$projet['contenu'].'</p>';        
+        $req.='<h5 class="card-title">'.$formation['form_annee'].'</h5>';        
+        $req.='<p class="card-text">'.$formation['form_intitule'].'</p>';
+        $req.='<p class="card-text">'.$formation['form_niveau'].'</p>';        
         // $contenu.='<p class="card-text">'.$langage['n°'].'</p>';
         $req.='</div>';        
         $req.='<div class="card-body">';
@@ -60,15 +60,10 @@ $donnees=$bdd->query("SELECT * FROM projets ");
     <?php echo $contenu;?>  
 
   </div>
-  <h3 class="text-center">PROJETS :</h3>
+  <h3 class="text-center">FORMATION</h3>
   <div class="row">
 
-<?php 
-<'pre'>;
-  echo $req;
-  </'pre'>;
-  // echo $msg;
-?>
+<?php  echo $req; // echo $msg;?>
 
   </div>
 </div>

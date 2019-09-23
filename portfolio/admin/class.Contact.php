@@ -36,3 +36,18 @@ Class Contact{
     
 
 }//FIN Class contact
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class Contact</title>
+</head>
+<body id="contact">
+<div class="image">
+    <img src="/photo/mail-793081_1280.png" alt="">
+</div>   
+</body>
+</html>

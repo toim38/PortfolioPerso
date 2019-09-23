@@ -2,7 +2,7 @@
 require_once "../inc/init.inc.php";
 extract($_POST);
 extract($_GET);
-
+$supprimer='';
 $msgTitre='';
 $msgContenu='';
 $msgliens='';
@@ -11,6 +11,10 @@ $projet_update='';
 echo '<pre style="background:black;color:white;">';
 print_r($_POST);
 echo '</pre>';
+
+
+
+
 //-----requete de modification et ajout en bdd------------------
 
 // 1 -  Je récupère les infos pour la modification
@@ -22,22 +26,32 @@ if(isset($_GET['action']) && $_GET['action'] == 'modifier' && ($_GET['id'])){
         //Je récupère des infos en BDD pour afficher dans le formulaire de modification
         $projet_update = $req->fetch(PDO::FETCH_ASSOC);
     }
+  }    
 //---insertion en bdd
 if($_POST){
   if(empty($titre_projet) || iconv_strlen($titre_projet) < 2 || iconv_strlen($titre_projet) > 100){
-    $msgTitre.='<span class=" alert-warning text-danger"> ** Saisissez un titre valide (100 caractère max)</span>';
+    $msgTitre .='<span class=" alert-warning text-danger"> ** Saisissez un titre valide (100 caractère max)</span>';
   } 
   if(empty($liens) || !filter_var($liens, FILTER_VALIDATE_URL)){
-    $msgliens.='<span class="alert-warning text-danger"> ** Saisissez une url valide</span>';
+    $msgliens .='<span class="alert-warning text-danger"> ** Saisissez une url valide</span>';
   } 
-  
+    //  if(empty($pj_lien) || !filter_var($pj_lien, FILTER_VALIDATE_URL)){
+    //     $pj_LienError  .= '<span class="col text-warning text-center"> LIEN non Valide</span>';
+    //  }  
   if(empty($contenu) || iconv_strlen($contenu) > 400){
-    $msgContenu.='<span class="alert-warning text-danger"> ** La description de doit pas dépasser 400 caractères</span>';
+    $msgContenu .='<span class="alert-warning text-danger"> ** La description de doit pas dépasser 400 caractères</span>';
   }  
   
 //------------j'insert en bdd-------
 if(empty($msgTitre)&& empty($msgContenu)&& empty($msgliens)){
-  //------------on vient d'effectuer une protection contre inject°----        
+  //------------on vient d'effectuer une protection contre inject°----  
+   foreach($_POST as $key => $value){
+        // strip_tags() --> supprime les balises HTML
+        // trim() --> supprime les espaces en début et fin de chaine
+        $_POST[$key] = strip_tags(trim($value));
+        // assainissement des saisies de l'intertnaute
+        $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+    }      
 
         $donnees=$bdd->prepare("REPLACE INTO projets VALUES (:id_projet, :titre_projet, :liens, :contenu)", array(
                 ':id_projet' => $_POST['id_projet'],
@@ -52,9 +66,13 @@ if(empty($msgTitre)&& empty($msgContenu)&& empty($msgliens)){
         $donnees->execute() ;   
 
         $successProjet .= '<div class="alert alert-success">L\'enregistrement a bien été réalisé en BDD.</div>';
-    }
-  }
-}//-----fin if($_POST)                          
+    }///------fin if(empty($msgTitre)&& empty($msgContenu)&& empty($msgliens))
+
+}//-----fin if($_POST)  
+ //requête de protection SQL
+       
+
+
 ?>           
 
 <!DOCTYPE html>
