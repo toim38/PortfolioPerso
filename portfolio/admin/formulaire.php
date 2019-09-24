@@ -19,7 +19,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>formulaire d'ajout du visiteur</title>
 </head>
-<body>
+<body id="contact">
 <form>
   <div class="form-row" methode="post" action="">   
   <div class="form-group">

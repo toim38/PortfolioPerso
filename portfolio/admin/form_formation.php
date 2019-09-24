@@ -100,7 +100,7 @@
     <!--cdn fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   </head>
-  <body id="contact">
+  <body >
     <!-- J'adapte le titre du formulaire selon l'action (ajout ou modification) -->
     <?php
       if(isset($_GET['action']) && $_GET['action'] == 'modifier'){

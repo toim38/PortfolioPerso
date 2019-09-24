@@ -4,6 +4,10 @@ require_once "inc/init.inc.php";
 require_once "inc/header.inc.php";
 
 ?>
+<div class="row">
+<a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8">Accueil</i></a>
+</div>
+
 <main class="container">
   <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

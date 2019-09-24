@@ -21,7 +21,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
 
 <body id="accueilAdmin">
 <div class="page">
-<img src="/photo/graphic-3982576_1280.png">
+
 <h1 class="text-center text-primary alert alert-warning m-5">Accueil Admin</h1>
 <section class="tabledesmatieres" >
 
@@ -50,6 +50,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
 </article>
 <button class="btn btn-lg btn-outline-danger rounded offset-10 mt-5" type="button text"><a href="?action=deconnexion" role="button">Deconnexion</a></button>   
     </div>
-</div>
+
 </body>
 </html>

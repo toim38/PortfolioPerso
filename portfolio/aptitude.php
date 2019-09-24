@@ -53,7 +53,10 @@ $donnees=$bdd->query("SELECT * FROM formations ");
     <link rel="stylesheet" href="css/style.css">
     <title>Aptitudes</title>
 </head>
-
+<body>
+<div class="row">
+<a href="index.php"><i class="fas fa-arrow-circle-left fa-2x text-info offset-8">Accueil</i></a>
+</div>
 <div class="container">
   <h3 class="text-center m-5">TECHNOLOGIE :</h3>
   <div class="row">
